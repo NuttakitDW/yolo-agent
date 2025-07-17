@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+venv/
+env/
+.env
+
+# Build outputs
+dist/
+build/
+*.pyc
+__pycache__/
+.cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Testing
+coverage/
+.coverage
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Claude Code
+.claude/
+
+# Secrets and keys
+*.key
+*.pem
+secrets/
