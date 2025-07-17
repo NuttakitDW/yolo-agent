@@ -113,9 +113,10 @@ They're lost by:
 ## Custom Commands
 
 ### /doc <query>
-When you see `/doc` followed by a query, research the topic and create a markdown documentation file in the `docs/` directory with:
-- Summary of key information
+When you see `/doc` followed by a query, use MCP tools to search the internet and research the topic, then create a markdown documentation file in the `docs/` directory with:
+- Summary of key information gathered from web search
 - Relevant details organized by sections
 - Important dates, requirements, or specifications
 - Tech stack recommendations if applicable
+- Sources and references from the research
 - Save the file with a descriptive filename based on the query topic
