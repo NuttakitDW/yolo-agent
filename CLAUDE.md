@@ -54,3 +54,13 @@ yolo-agent/
 ## Project Purpose
 
 - This project will be used as an assistant agent to give feedback on ideas and gather information for hackathons
+
+## Custom Commands
+
+### /doc <query>
+When you see `/doc` followed by a query, research the topic and create a markdown documentation file in the `docs/` directory with:
+- Summary of key information
+- Relevant details organized by sections
+- Important dates, requirements, or specifications
+- Tech stack recommendations if applicable
+- Save the file with a descriptive filename based on the query topic
