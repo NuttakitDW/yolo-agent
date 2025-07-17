@@ -1,0 +1,16 @@
+{
+  "name": "pycon-thailand-speaker-scraper",
+  "version": "1.0.0",
+  "description": "Scraper for PyCon Thailand 2025 speaker information from Sessionize",
+  "main": "scrape-speakers.js",
+  "scripts": {
+    "scrape": "node scripts/scrape-speakers.js",
+    "scrape:speakers": "node scripts/scrape-speakers.js"
+  },
+  "keywords": ["pycon", "thailand", "scraper", "puppeteer"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^22.0.0"
+  }
+}

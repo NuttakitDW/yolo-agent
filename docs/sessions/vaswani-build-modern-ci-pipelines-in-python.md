@@ -19,5 +19,4 @@ CI is no longer a simple chain of shell commands. In modern, polyglot organizati
 
 ### Vikram Vaswani
 
-*Speaker bio will be available soon.*
-
+Vikram Vaswani is an open source consultant with 22+ years of software engineering experience. He is the author of seven books on software and database programming for The McGraw-Hill Companies. In addition to his technical expertise, he is well-versed in product lifecycle management, product marketing and community management.

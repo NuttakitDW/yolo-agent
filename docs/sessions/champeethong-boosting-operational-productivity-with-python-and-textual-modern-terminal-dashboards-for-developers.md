@@ -19,5 +19,4 @@ Many developers work primarily in the terminal yet rely on clunky scripts or web
 
 ### Piti Champeethong
 
-*Speaker bio will be available soon.*
-
+I am a Senior Consulting Engineer who loves sharing MongoDB and Microsoft technologies like Azure. I am a community speaker at the Thailand MongoDB User Group and .NET Thailand community.

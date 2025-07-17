@@ -109,3 +109,10 @@ When you see `/doc` followed by a query, use MCP tools to search the internet an
 - Tech stack recommendations if applicable
 - Sources and references from the research
 - Save the file with a descriptive filename based on the query topic
+
+### /scrape:speakers
+Scrapes speaker information from PyCon Thailand 2025 Sessionize page:
+- Run: `npm run scrape:speakers`
+- Extracts speaker names, bios, titles, companies, and social links
+- Outputs: `pycon-thailand-2025-speakers.json` and `.md` files
+- Script location: `scripts/scrape-speakers.js`

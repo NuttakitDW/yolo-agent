@@ -19,5 +19,4 @@ We are privileged to build a brand-new digital bank for one of our clients in Au
 
 ### Theo J Chiu
 
-*Speaker bio will be available soon.*
-
+Tech Lead at Ikigai Digital and has been in the FinTech field for over 5 years. Participated in building multiple successfully greenfield/brownfield digital banks in Hong Kong, Philippines and   Australia.

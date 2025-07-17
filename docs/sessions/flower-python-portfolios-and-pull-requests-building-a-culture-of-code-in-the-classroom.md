@@ -19,5 +19,4 @@ Python isn’t just a great first language—it’s a powerful one. In my high s
 
 ### Zachary Flower
 
-*Speaker bio will be available soon.*
-
+Zachary Flower is a former software engineer turned high school educator, where he leads a unique career and technical education program that teaches juniors and seniors how to build, break, and secure real-world software like true professionals. Before trading startups for the classroom, he worked as a technical writer, developer, manager, and director for companies in every corner of the tech industry. He’s an active voice in the developer-educator space, helping students ship production-grade code, contribute to open portfolios, and earn internships before they graduate. Zach is an avid indoorsman, and when he’s not teaching teens how to hack the planet, he’s tinkering with tech that probably didn't need fixing in the first place or getting schooled by his daughters in Mario Kart.

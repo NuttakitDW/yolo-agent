@@ -19,6 +19,4 @@ Open source isn't just about code, it's about people, process, and purpose. As c
 
 ### Joyce Dzifa Lokko
 
-Joyce Dzifa Lokko is a dynamic software engineer, tech enthusiast, and advocate for diversity and inclusion in the tech industry. With a strong background in project management and strategic communications, Dzifa is passionate about leveraging technology to foster inclusive and innovative environments, particularly in open-source communities. Dzifa is committed to driving change in tech and using her platform to empower others, particularly women in STEM.
-
-
+Joyce Dzifa Lokko is a dynamic software engineer, tech enthusiast, and advocate for diversity and inclusion in the tech industry. With a strong background in project management and strategic communications, Dzifa is passionate about leveraging technology to foster inclusive and innovative environments, particularly in open-source communities.  Dzifa is committed to driving change in tech and using her platform to empower others, particularly women in STEM.

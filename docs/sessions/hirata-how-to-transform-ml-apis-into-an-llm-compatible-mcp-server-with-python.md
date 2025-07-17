@@ -19,5 +19,4 @@ Large language models (LLMs) are no longer just text generators—they're evolvi
 
 ### Tetsuya Hirata
 
-*Speaker bio will be available soon.*
-
+Tetsuya is an individual contributor experienced in software engineering within learning science. Formerly at AWS JP, EdTech companies, and UCL IOE's Knowledge Lab. Tetsuya excels in developing prototypes from the early stages of AI/ML-based R&D to productization. https://twitter.com/JesseTetsuya

@@ -19,5 +19,4 @@ I want to talk about the inception of a FOSS project whose purpose was just norm
 
 ### Kurian Benoy
 
-*Speaker bio will be available soon.*
-
+I am working as an ML Engineer building Full-Stack GenAI @ Sarvam.ai. I have multiple years of experience in Python and Machine learning experience. I have contributed to various open source organizations like Swathanthra Malayalam Computing, FOSSASIA, Keras, DVC, HuggingFace, fast.ai, CloudCV etc.Check my previous talks here: https://kurianbenoy.com/talks.html

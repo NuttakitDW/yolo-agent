@@ -20,5 +20,3 @@ This session explores the best practices for building graph-based Retrieval-Augm
 ### Witthawin Sripheanpol
 
 Experienced Deep Learning & Data Scientist with a demonstrated history of working in the computer software industry. Skilled in Leadership, LLM, Computer Vision, Engineering, and Robotics. Strong engineering professional with a Engineer's degree focused in Mechatronics, Robotics, and Automation Engineering from King Mongkut's University of Technology Thonburi.
-
-

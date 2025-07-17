@@ -19,8 +19,8 @@ Python and WebAssembly haven’t exactly been easy to go. While the JS world is 
 
 ### Kumar Anirudha
 
-*Speaker bio will be available soon.*
+Open source builder, Tech consultant and independent researcher.
 
 ### Farhaan Bukhsh
 
-
+Farhaan Bukhsh is an open-source contributor, Pythonista and now a newbie rustacean. With a background in cloud infrastructure and platform engineering, Farhaan has contributed extensively to projects like Fedora and Open edX, where he is a core committer and current release manager. He's passionate about bridging the performance gap between Python and system-level programming, recently exploring the power of Rust to accelerate machine learning workflows. When he's not writing code, Farhaan enjoys mentoring new contributors, organizing tech communities, and brewing the perfect pour-over coffee.

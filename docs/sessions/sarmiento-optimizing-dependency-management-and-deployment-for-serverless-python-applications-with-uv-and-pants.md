@@ -19,5 +19,4 @@ In this talk, we will explore how to streamline the development and deployment o
 
 ### Arnel Jan Sarmiento
 
-*Speaker bio will be available soon.*
-
+Arnel is a Python Backend Engineer specializing in cloud-native and serverless applications. He works at Elemnta, a Sydney-based fintech company delivering tailored digital solutions for financial advisors. With extensive experience in cloud computing, he excels in designing secure, scalable, and well-architected systems that drive business impact. As Community Lead of DurianPy, Davao's official Python User Group, Arnel is passionate about fostering innovation, collaboration, and the growth of Python developers to advance the region's tech ecosystem.

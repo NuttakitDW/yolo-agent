@@ -19,5 +19,4 @@ As cloud-native applications grow increasingly asynchronous, maintaining observa
 
 ### Tejas Kothari
 
-*Speaker bio will be available soon.*
-
+Tejas is a software engineer with 4+ years of experience in algorithmic & backend development.  At 1MG, he worked on restructuring of a monolithic Ruby on Rails system into Python microservices enhancing product performance. Currently, at Observe AI, he is building an AI Voice Agent Platform. He also shares insights as a tech writer and enjoys exploring new technologies.

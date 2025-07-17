@@ -19,5 +19,4 @@ When talking about Python, you'll usually think of it as a high-level language f
 
 ### Ratchanan Srirattanamet
 
-*Speaker bio will be available soon.*
-
+Ratchanan Srirattanamet is an open source developer, focusing on system development. He has been involved in the development of Ubuntu Touch since 2016, and is now one of the maintainer of Ubuntu Touch in UBports community. He is also interested in web development, system administration, and software licensing.

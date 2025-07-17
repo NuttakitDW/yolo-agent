@@ -19,5 +19,4 @@ As generative AI becomes increasingly integrated into production systems, ensuri
 
 ### Nitin Rathee
 
-*Speaker bio will be available soon.*
-
+Nitin Rathee is an enthusiastic and passionate Software Engineer II at Microsoft and he graduated with distinction from National Institute of Technology, India. His professional trajectory is marked by transformative contributions to cutting-edge projects that redefine the boundaries of technology. He is passionate about open source outside of his 9 to 5. He has guided and mentored hundreds of students in advancing their technology skills and career paths. Embracing the collaborative spirit of the open source community, he aims to thrive in an ecosystem where creativity knows no bounds and innovation flourishes.

@@ -19,5 +19,4 @@ Recommendation systems are the heart and soul of many applications, making it po
 
 ### Aleksei Kharinskii
 
-*Speaker bio will be available soon.*
-
+A former Head of Development at a hosting company, where he led the creation of a public cloud platform (clo.ru) based on OpenStack and Tungsten Fabric. With a career spanning from system administration to Staff Cloud Engineer, he brings deep expertise in cloud infrastructure and scalable systems. Currently, he is bootstrapping a startup in Malaysia focused on lightweight AI agents and data analysis.

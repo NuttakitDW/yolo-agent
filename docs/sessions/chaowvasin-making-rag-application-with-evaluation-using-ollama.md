@@ -19,5 +19,4 @@ In this session, we’ll build a local chatbot using Ollama and explore how to e
 
 ### Kasidis Chaowvasin
 
-*Speaker bio will be available soon.*
-
+I’m a full-stack software engineer. Love solving real-world problems through technology, whether it’s streamlining event registration for large audiences, improving system reliability under heavy traffic, or creating tools that make complex processes more efficient and user-friendly. My focus is on building solutions that are not just functional, but impactful and scalable.

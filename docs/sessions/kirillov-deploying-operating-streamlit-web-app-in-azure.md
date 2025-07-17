@@ -19,5 +19,4 @@ Since Gen AI epoch started, Streamlit quickly became one of the most popular fra
 
 ### Zahhar Kirillov
 
-*Speaker bio will be available soon.*
-
+During 20+ years spent in ICT industry, I had a privilege to wear all possible hats, acting as a software developer, UX designer, university lecturer, startup entrepreneur, CIO and finally as a delivery manager at S&P500 engineering company. Creating software is my biggest passion. I stay hands-on by delivering PoC and MVP to clients, diving into all aspects of modern technology, be it cloud computing, blockchain or AI. Originally from Estonia, since 2016 I live in Switzerland and in free time I enjoy doing yoga and snowboarding.

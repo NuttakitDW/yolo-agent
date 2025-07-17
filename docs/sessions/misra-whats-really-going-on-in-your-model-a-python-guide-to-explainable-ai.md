@@ -19,5 +19,4 @@ We’ve all been there, your machine learning model performs well in testing, bu
 
 ### Yashasvi Misra
 
-*Speaker bio will be available soon.*
-
+Yashasvi Misra is a Data Engineer at Pure Storage and Chair of the NumFOCUS Code of Conduct Working Group, where she helps foster inclusive practices across the open-source ecosystem. She has contributed to foundational projects like NumPy and has been an active part of the Python community since her college days.Yashasvi is also a passionate advocate for diversity and inclusion in tech. She introduced a period leave policy at a previous organization and continues to work toward building more equitable workplaces.She has shared her work and insights at conferences around the world, including PyCon India, PyCon Europe, PyLadiesCon, and PyData Global.

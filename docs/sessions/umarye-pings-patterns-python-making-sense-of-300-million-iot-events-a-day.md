@@ -19,5 +19,4 @@ How do you process over 300 million IoT events daily from 1.5 lakh devices? In t
 
 ### Utkarsh Umarye
 
-*Speaker bio will be available soon.*
-
+I'm a Data Scientist at Battery Smart, where I build real-time ML systems for India's largest EV battery-swapping network. My work focuses on face authentication, IoT telemetry analysis, and edge deployments — all powered by scalable Python pipelines. With over 4 years of experience, I enjoy turning real-world problems into production-ready machine learning solutions that are fast, reliable, and impactful.

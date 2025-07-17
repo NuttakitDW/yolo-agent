@@ -19,5 +19,4 @@ In PyCon 2023, I talked about implementing systematic trading using Python and m
 
 ### Prem Chotepanit
 
-*Speaker bio will be available soon.*
-
+I'm a data scientist who owns the Facebook page "Data Karate - ดาต้าคาราเต้". My Kaggle rank is "Grand Master"Ref: https://www.kaggle.com/batpremAs a data scientist, I'm surely interested in machine learning and Python. Moreover, I love to create a solution that solves the real-world problems using my software engineering and my special skill ;)

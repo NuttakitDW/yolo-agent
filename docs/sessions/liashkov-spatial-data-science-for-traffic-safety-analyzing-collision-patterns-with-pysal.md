@@ -19,5 +19,4 @@ This talk explores key statistical techniques for spatial data analysis in Pytho
 
 ### Stanislav Liashkov
 
-*Speaker bio will be available soon.*
-
+I work as NLP Engineer in Legal Tech company. I’m completing my MS in Data Science at the University of Colorado Boulder—specializing in statistical inference and spatial analysis. I am passionate about applied research involving sophisticated data processing and statistical modeling.

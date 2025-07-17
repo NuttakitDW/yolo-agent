@@ -19,5 +19,4 @@ As machine learning becomes integral to modern applications, the attack surface 
 
 ### Mohammad Saheer Padinharayil
 
-*Speaker bio will be available soon.*
-
+AI security and cloud-native pipeline expert with about a decade of experience in building scalable, secure ML platforms. Currently leading Payment Integrity and Automation efforts at CVS Health with a focus on ML governance and infrastructure. Frequent speaker on GCP, AI/ML and enterprise-scale MLOps.

@@ -19,5 +19,4 @@ As AI development shifts toward more agentic and composable workloads, the moder
 
 ### Alex Merced
 
-*Speaker bio will be available soon.*
-
+Alex Merced is a Senior Tech Evangelist for Dremio and has worked as a developer and instructor for companies like GenEd Systems, Crossfield Digital, CampusGuard and General Assembly.Alex is passionate about technology and has put out tech content on outlets such as blogs, videos and his podcasts Datanation and Web Dev 101. Alex Merced has contributed a variety of libraries in the Javascript & Python worlds including SencilloDB, CoquitoJS, dremio-simple-query and more.

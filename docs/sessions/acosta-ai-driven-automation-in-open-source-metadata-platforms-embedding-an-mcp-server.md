@@ -20,4 +20,3 @@ Model Context Protocol (MCP) is an open protocol for AI agent communication that
 ### Nick Acosta
 
 Nick Acosta is a Developer Advocate at Collate, where he is helping to make the OpenMetadata community the best place for open-source data discovery, observability, and governance. Nick lives in Los Angeles, California, and started in Developer Relations at IBM before leading devrel at Fivetran and Tecton. Nick is a previous speaker at Python conferences such as PyData NYC, PyData LA, and PyCon UK.
-

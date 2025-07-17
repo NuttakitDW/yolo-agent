@@ -19,5 +19,4 @@ Modern software observability relies on instrumentation agents for collecting te
 
 ### Amitosh Mahapatra
 
-*Speaker bio will be available soon.*
-
+Computer whisperer from Bangalore, India. I've been conjuring code since 2010.I am currently working as a Platform Engineer at Toplyne, and I was previously at Gojek. I have worked with the FOSSi Foundation as part of the Google Summer of Code in 2017 and the Fedora Project as part of the Google Summer of Code in 2018. I am an active contributor to the Fedora Project, FOSSi Foundation, Elastic, and numerous other open-source projects.

@@ -19,5 +19,4 @@ Python makes it easy to start building — but deploying, scaling, and managing 
 
 ### Manjula Rathnayake
 
-*Speaker bio will be available soon.*
-
+Manjula Rathnayaka is a Director of Engineering at WSO2 with over 14 years of experience in cloud-native technologies and platform architecture. He has contributed to designing multi-tenant platforms using Kubernetes and CNCF tools, with current efforts to open source this work via OpenChoreo. He has built SaaS platforms on AWS, GCP, and Azure, and holds CKA, CKAD, and CKS certifications. His focus includes abstractions, CP/DP separation, and developer experience.

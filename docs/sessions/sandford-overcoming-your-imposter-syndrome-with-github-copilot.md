@@ -19,5 +19,4 @@ Do you have a voice inside your head that pops up and tells you that you aren't 
 
 ### Michelle Sandford
 
-*Speaker bio will be available soon.*
-
+I live at the heart of the coding community and help drive awareness and engagement as a developer advocate and technology evangelist. I present at around 50 Conferences and Events around the world each year on AI, Azure, GitHub, Open Source, GameDev and LinkedIn (Including NDC Oslo, London, Copenhagen, Porto, Melbourne; Techorama BE & NL; DDDPerth; GCAP; Google Dev Fest, MS TechReady, MS GeekReady, MS Ignite etc). I judge hackathons and encourage the next generation into technology careers. In 2023 I became the host of the Microsoft ANZ web show - New Breakpoint, which is a show for developers by developers. I am also a co-organiser for the Rust Perth Community Group. I was the #1 Microsoft Social Seller (highest engagement) on LinkedIn for several years and remain #1 SSI rank in team, top 1% in industry and top 1% in network. I run the Microsoft Student Accelerator Program for ANZ encouraging emerging developers to build on Azure.

@@ -19,5 +19,4 @@ For many years, pandas has been the de facto standard for data transformation an
 
 ### Marc Garcia
 
-*Speaker bio will be available soon.*
-
+Marc has been a pandas core developer since 2018. He was the release manager of pandas 2.0. He was awarded the Python Software Foundation fellow award, and the NumFOCUS community award for his work mentoring people to contribute to open source. Marc has worked professionally for companies like Bank of America, Unilever, Tesco ans Bumble. Currently Marc works as an independent consultant and technical trainer helping companies work more efficiently with data.
