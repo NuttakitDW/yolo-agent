@@ -50,3 +50,7 @@ yolo-agent/
 - Quick setup scripts
 - Common code patterns
 - Integration examples
+
+## Project Purpose
+
+- This project will be used as an assistant agent to give feedback on ideas and gather information for hackathons

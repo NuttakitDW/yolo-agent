@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "yolo-agent-scraper": {
+      "command": "node",
+      "args": ["/Users/nuttakit/project/yolo-agent/mcp-scraper/index.js"],
+      "env": {}
+    }
+  }
+}
