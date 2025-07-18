@@ -116,3 +116,14 @@ Scrapes speaker information from PyCon Thailand 2025 Sessionize page:
 - Extracts speaker names, bios, titles, companies, and social links
 - Outputs: `pycon-thailand-2025-speakers.json` and `.md` files
 - Script location: `scripts/scrape-speakers.js`
+
+### /write
+Steps to Write a Post:
+  1. Read sessions file - Check for speaker/topic information
+  2. Read template - Use speaker-post-template.md for structure
+  3. Create bilingual content - Write in Thai and English (use speaker bio)
+  4. Add footer - Use footer from templates/footer.md (includes hashtags)
+  5. Save draft - Store in posts/ directory
+
+## Memory Notes
+- Before writing a post read file in sessions first about that topic
