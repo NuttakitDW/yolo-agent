@@ -120,3 +120,16 @@ When you see `/doc` followed by a query, use MCP tools to search the internet an
 - Tech stack recommendations if applicable
 - Sources and references from the research
 - Save the file with a descriptive filename based on the query topic
+
+### /private
+Activates private mode for the repository by:
+- Detaching from all remote repositories
+- Installing a git hook to prevent any push attempts
+- Ensuring all work remains local only
+
+To use: Run `./scripts/private.sh` or `/private`
+
+To deactivate private mode:
+1. Delete `.git/hooks/pre-push`
+2. Re-add remote: `git remote add origin <your-repo-url>`
+3. Delete `.git/PRIVATE_MODE`
