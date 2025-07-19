@@ -26,7 +26,7 @@ Senior Consulting Engineer
 📌 หัวข้อ: "Boosting Operational Productivity with Python and Textual: Modern Terminal Dashboards for Developers"
 💻 App Development
 
-💡 เปลี่ยน terminal ของคุณให้เป็น operations center ที่ทรงพลัง! สร้าง interactive, async-first terminal UIs ด้วย Textual ที่ใช้งานเหมือน modern apps ดูตัวอย่าง MongoDB cluster admin dashboard และเรียนรู้ patterns สำหรับ CI/CD, monitoring และ internal tools - ไม่ต้องใช้ GUI หรือ browser!
+💡 เปลี่ยน terminal ของคุณให้เป็น operations center ที่ทรงพลัง! สร้าง interactive, async-first terminal UIs ด้วย Textual ที่ใช้งานเหมือน modern apps พร้อมพาทัวร์ MongoDB cluster admin dashboard และเรียนรู้ patterns สำหรับ CI/CD, monitoring และ internal tools - โดยไม่ต้องใช้ GUI หรือ browser!
 
 ---
 
