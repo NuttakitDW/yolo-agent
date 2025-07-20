@@ -1,0 +1,333 @@
+[
+  {
+    "name": "Marc Garcia",
+    "tagline": "pandas core developer",
+    "bio": "Marc has been a pandas core developer since 2018. He was the release manager of pandas 2.0. He was awarded the Python Software Foundation fellow award, and the NumFOCUS community award for his work mentoring people to contribute to open source. Marc has worked professionally for companies like Bank of America, Unilever, Tesco ans Bumble. Currently Marc works as an independent consultant and technical trainer helping companies work more efficiently with data.",
+    "links": [],
+    "sessions": [
+      "Introduction to Polars",
+      "What's new in pandas 3.0"
+    ],
+    "title": "pandas core developer",
+    "company": ""
+  },
+  {
+    "name": "Nick Acosta",
+    "tagline": "Developer Advocate at OpenMetadata",
+    "bio": "Nick Acosta is a Developer Advocate at Collate, where he is helping to make the OpenMetadata community the best place for open-source data discovery, observability, and governance. Nick lives in Los Angeles, California, and started in Developer Relations at IBM before leading devrel at Fivetran and Tecton. Nick is a previous speaker at Python conferences such as PyData NYC, PyData LA, and PyCon UK.",
+    "links": [],
+    "sessions": [
+      "AI Driven Automation in Open-Source Metadata Platforms: Embedding an MCP Server"
+    ],
+    "title": "Developer Advocate",
+    "company": "OpenMetadata"
+  },
+  {
+    "name": "Vikram Vaswani",
+    "tagline": "Consultant",
+    "bio": "Vikram Vaswani is an open source consultant with 22+ years of software engineering experience. He is the author of seven books on software and database programming for The McGraw-Hill Companies. In addition to his technical expertise, he is well-versed in product lifecycle management, product marketing and community management.",
+    "links": [],
+    "sessions": [
+      "Build Modern CI Pipelines in Python"
+    ],
+    "title": "Consultant",
+    "company": ""
+  },
+  {
+    "name": "Karn Wong",
+    "tagline": "Independent Consultant",
+    "bio": "An engineer who loves working on cloud automation and optimization.",
+    "links": [],
+    "sessions": [
+      "ML Model Serving Optimization with ONNX"
+    ],
+    "title": "Independent Consultant",
+    "company": ""
+  },
+  {
+    "name": "Kasidis Chaowvasin",
+    "tagline": "Software Engineer at PALO IT Thailand",
+    "bio": "I’m a full-stack software engineer. Love solving real-world problems through technology, whether it’s streamlining event registration for large audiences, improving system reliability under heavy traffic, or creating tools that make complex processes more efficient and user-friendly. My focus is on building solutions that are not just functional, but impactful and scalable.",
+    "links": [],
+    "sessions": [
+      "Making RAG Application with Evaluation Using Ollama"
+    ],
+    "title": "Software Engineer",
+    "company": "PALO IT Thailand"
+  },
+  {
+    "name": "Jirayut Nimsaeng",
+    "tagline": "CEO at Opsta",
+    "bio": "Jirayut has played a prominent role in DevSecOps, Container, Cloud Technology, and Open Source for over 15 years. He has experienced and succeeded in DevSecOps transforming for several companies to deliver higher values and be more agile. He also joined technology events, participated as a speaker to share knowledge and experiences, and loved to discuss with people.",
+    "links": [],
+    "sessions": [
+      "Practical in Python Observability"
+    ],
+    "title": "CEO",
+    "company": "Opsta"
+  },
+  {
+    "name": "Kurian Benoy",
+    "tagline": "ML Engineer at Sarvam AI",
+    "bio": "I am working as an ML Engineer building Full-Stack GenAI @ Sarvam.ai. I have multiple years of experience in Python and Machine learning experience. I have contributed to various open source organizations like Swathanthra Malayalam Computing, FOSSASIA, Keras, DVC, HuggingFace, fast.ai, CloudCV etc.Check my previous talks here: https://kurianbenoy.com/talks.html",
+    "links": [],
+    "sessions": [
+      "How I ended up maintaining a Python package with 1M+ downloads"
+    ],
+    "title": "ML Engineer",
+    "company": "Sarvam AI"
+  },
+  {
+    "name": "Ratchanan Srirattanamet",
+    "tagline": "Maintainer of Ubuntu Touch",
+    "bio": "Ratchanan Srirattanamet is an open source developer, focusing on system development. He has been involved in the development of Ubuntu Touch since 2016, and is now one of the maintainer of Ubuntu Touch in UBports community. He is also interested in web development, system administration, and software licensing.",
+    "links": [],
+    "sessions": [
+      "Python as a system language: How Python is used in a Linux system"
+    ],
+    "title": "Maintainer of Ubuntu Touch",
+    "company": ""
+  },
+  {
+    "name": "Stanislav Liashkov",
+    "tagline": "Data Science Student at University of Colorado Boulder",
+    "bio": "I work as NLP Engineer in Legal Tech company. I’m completing my MS in Data Science at the University of Colorado Boulder—specializing in statistical inference and spatial analysis. I am passionate about applied research involving sophisticated data processing and statistical modeling.",
+    "links": [],
+    "sessions": [
+      "Spatial Data Science for Traffic Safety: Analyzing Collision Patterns with PySAL"
+    ],
+    "title": "Data Science Student",
+    "company": "University of Colorado Boulder"
+  },
+  {
+    "name": "Mohammad Saheer Padinharayil",
+    "tagline": "Manager at CVS Health",
+    "bio": "AI security and cloud-native pipeline expert with about a decade of experience in building scalable, secure ML platforms. Currently leading Payment Integrity and Automation efforts at CVS Health with a focus on ML governance and infrastructure. Frequent speaker on GCP, AI/ML and enterprise-scale MLOps.",
+    "links": [],
+    "sessions": [
+      "Securing AI Models and ML Pipelines: Best Practices and Pitfalls to Avoid"
+    ],
+    "title": "Manager",
+    "company": "CVS Health"
+  },
+  {
+    "name": "Arnel Jan Sarmiento",
+    "tagline": "Cloud Engineer, Python Developer, and Community Lead at DurianPy - Davao Python User Group",
+    "bio": "Arnel is a Python Backend Engineer specializing in cloud-native and serverless applications. He works at Elemnta, a Sydney-based fintech company delivering tailored digital solutions for financial advisors. With extensive experience in cloud computing, he excels in designing secure, scalable, and well-architected systems that drive business impact. As Community Lead of DurianPy, Davao's official Python User Group, Arnel is passionate about fostering innovation, collaboration, and the growth of Python developers to advance the region's tech ecosystem.",
+    "links": [],
+    "sessions": [
+      "Optimizing Dependency Management and Deployment for Serverless Python Applications with uv and Pants"
+    ],
+    "title": "Cloud Engineer, Python Developer, and Community Lead",
+    "company": "DurianPy - Davao Python User Group"
+  },
+  {
+    "name": "Tejas Kothari",
+    "tagline": "SDE 2 at Observe.AI",
+    "bio": "Tejas is a software engineer with 4+ years of experience in algorithmic & backend development.  At 1MG, he worked on restructuring of a monolithic Ruby on Rails system into Python microservices enhancing product performance. Currently, at Observe AI, he is building an AI Voice Agent Platform. He also shares insights as a tech writer and enjoys exploring new technologies.",
+    "links": [],
+    "sessions": [
+      "Revolutionizing Observability: Python Logging for Asynchronous Cloud-native Systems"
+    ],
+    "title": "SDE 2",
+    "company": "Observe.AI"
+  },
+  {
+    "name": "Yashasvi Misra",
+    "tagline": "Data Engineer at Pure Storage",
+    "bio": "Yashasvi Misra is a Data Engineer at Pure Storage and Chair of the NumFOCUS Code of Conduct Working Group, where she helps foster inclusive practices across the open-source ecosystem. She has contributed to foundational projects like NumPy and has been an active part of the Python community since her college days.Yashasvi is also a passionate advocate for diversity and inclusion in tech. She introduced a period leave policy at a previous organization and continues to work toward building more equitable workplaces.She has shared her work and insights at conferences around the world, including PyCon India, PyCon Europe, PyLadiesCon, and PyData Global.",
+    "links": [],
+    "sessions": [
+      "What’s Really Going on in Your Model? A Python Guide to Explainable AI"
+    ],
+    "title": "Data Engineer",
+    "company": "Pure Storage"
+  },
+  {
+    "name": "Piti Champeethong",
+    "tagline": "Senior Consulting Engineer at MongoDB",
+    "bio": "I am a Senior Consulting Engineer who loves sharing MongoDB and Microsoft technologies like Azure. I am a community speaker at the Thailand MongoDB User Group and .NET Thailand community.",
+    "links": [],
+    "sessions": [
+      "Boosting Operational Productivity with Python and Textual: Modern Terminal Dashboards for Developers"
+    ],
+    "title": "Senior Consulting Engineer",
+    "company": "MongoDB"
+  },
+  {
+    "name": "Supasate Vorathammathorn",
+    "tagline": "Quantum Evangelist and AI Researcher",
+    "bio": "Supasate Vorathammathorn is a passionate Quantum and AI researcher with a strong foundation in computer engineering and a keen focus on applying cutting-edge technologies to real-world challenges. He is currently a Quantum Computing Research Assistant at the Quantum Computing and Information Research Centre and an AI Engineering Researcher at CARIVA (Thailand), where he develops and optimizes large language models and quantum-enhanced solutions for healthcare and industry.With deep experience in Python, Qiskit, PennyLane, PyTorch, and TensorFlow, Supasate has contributed to research projects in quantum optimization, quantum benchmarking, anomaly detection, and generative AI. He is also a top-ranking gold medalist in Thailand’s prestigious Super AI Engineer program and has presented at international conferences including ICMR, SCAsia, and QCNC.Supasate actively shares his knowledge as a Microsoft Learn Student Ambassador (Gold level) and guest lecturer at the Artificial Intelligence Association of Thailand, aiming to inspire the next generation of tech innovators.",
+    "links": [],
+    "sessions": [
+      "Building a Quantum AI Model with Python"
+    ],
+    "title": "Quantum Evangelist and AI Researcher",
+    "company": ""
+  },
+  {
+    "name": "Joyce Dzifa Lokko",
+    "tagline": "Software Engineer and Service Delivery Manager at Turntabl",
+    "bio": "Joyce Dzifa Lokko is a dynamic software engineer, tech enthusiast, and advocate for diversity and inclusion in the tech industry. With a strong background in project management and strategic communications, Dzifa is passionate about leveraging technology to foster inclusive and innovative environments, particularly in open-source communities.  Dzifa is committed to driving change in tech and using her platform to empower others, particularly women in STEM.",
+    "links": [],
+    "sessions": [
+      "AI in Open-source Project Management: More than Just Code"
+    ],
+    "title": "Software Engineer and Service Delivery Manager",
+    "company": "Turntabl"
+  },
+  {
+    "name": "Kumar Anirudha",
+    "tagline": "Product Architect",
+    "bio": "Open source builder, Tech consultant and independent researcher.",
+    "links": [],
+    "sessions": [
+      "Bringing Python to WebAssembly"
+    ],
+    "title": "Product Architect",
+    "company": ""
+  },
+  {
+    "name": "Farhaan Bukhsh",
+    "tagline": "Senior Open Source Developer at OpenCraft",
+    "bio": "Farhaan Bukhsh is an open-source contributor, Pythonista and now a newbie rustacean. With a background in cloud infrastructure and platform engineering, Farhaan has contributed extensively to projects like Fedora and Open edX, where he is a core committer and current release manager. He's passionate about bridging the performance gap between Python and system-level programming, recently exploring the power of Rust to accelerate machine learning workflows. When he's not writing code, Farhaan enjoys mentoring new contributors, organizing tech communities, and brewing the perfect pour-over coffee.",
+    "links": [],
+    "sessions": [
+      "Bringing Python to WebAssembly"
+    ],
+    "title": "Senior Open Source Developer",
+    "company": "OpenCraft"
+  },
+  {
+    "name": "Manjula Rathnayake",
+    "tagline": "Director of Engineering at WSO2",
+    "bio": "Manjula Rathnayaka is a Director of Engineering at WSO2 with over 14 years of experience in cloud-native technologies and platform architecture. He has contributed to designing multi-tenant platforms using Kubernetes and CNCF tools, with current efforts to open source this work via OpenChoreo. He has built SaaS platforms on AWS, GCP, and Azure, and holds CKA, CKAD, and CKS certifications. His focus includes abstractions, CP/DP separation, and developer experience.",
+    "links": [],
+    "sessions": [
+      "Why Python Developers Need Better Platforms — And What That Actually Looks Like"
+    ],
+    "title": "Director of Engineering",
+    "company": "WSO2"
+  },
+  {
+    "name": "Tetsuya Hirata",
+    "tagline": "SWE / ML Eng",
+    "bio": "Tetsuya is an individual contributor experienced in software engineering within learning science. Formerly at AWS JP, EdTech companies, and UCL IOE's Knowledge Lab. Tetsuya excels in developing prototypes from the early stages of AI/ML-based R&D to productization. https://twitter.com/JesseTetsuya",
+    "links": [],
+    "sessions": [
+      "How to Transform ML APIs into an LLM-compatible MCP Server with Python"
+    ],
+    "title": "SWE / ML Eng",
+    "company": ""
+  },
+  {
+    "name": "Theo J Chiu",
+    "tagline": "Tech Lead at Ikigai Digital",
+    "bio": "Tech Lead at Ikigai Digital and has been in the FinTech field for over 5 years. Participated in building multiple successfully greenfield/brownfield digital banks in Hong Kong, Philippines and   Australia.",
+    "links": [],
+    "sessions": [
+      "How we built an entire bank from scratch with Python"
+    ],
+    "title": "Tech Lead",
+    "company": "Ikigai Digital"
+  },
+  {
+    "name": "Thohirah Husaini",
+    "tagline": "Software Engineer/Artist at ODT",
+    "bio": "It's Thohirah HusainiA Student of the world,Software Engineer,Storyteller.Currently working as a Software Engineer/Artist at ODT.",
+    "links": [],
+    "sessions": [
+      "The Art of Simplicity: Python’s Syntactic Sugar?"
+    ],
+    "title": "Software Engineer/Artist",
+    "company": "ODT"
+  },
+  {
+    "name": "Aleksei Kharinskii",
+    "tagline": "MealTune Founder and Former Cloud Engineer",
+    "bio": "A former Head of Development at a hosting company, where he led the creation of a public cloud platform (clo.ru) based on OpenStack and Tungsten Fabric. With a career spanning from system administration to Staff Cloud Engineer, he brings deep expertise in cloud infrastructure and scalable systems. Currently, he is bootstrapping a startup in Malaysia focused on lightweight AI agents and data analysis.",
+    "links": [],
+    "sessions": [
+      "From Scratch to Scale: Open-source Stack for Recommendation Systems"
+    ],
+    "title": "MealTune Founder and Former Cloud Engineer",
+    "company": ""
+  },
+  {
+    "name": "Witthawin Sripheanpol",
+    "tagline": "AI Researcher",
+    "bio": "Experienced Deep Learning & Data Scientist with a demonstrated history of working in the computer software industry. Skilled in Leadership, LLM, Computer Vision, Engineering, and Robotics. Strong engineering professional with a Engineer's degree focused in Mechatronics, Robotics, and Automation Engineering from King Mongkut's University of Technology Thonburi.",
+    "links": [],
+    "sessions": [
+      "Best Practices for Building Graph-based RAG from Multiple Documents with Python"
+    ],
+    "title": "AI Researcher",
+    "company": ""
+  },
+  {
+    "name": "Amitosh Mahapatra",
+    "tagline": "Computer Whisperer",
+    "bio": "Computer whisperer from Bangalore, India. I've been conjuring code since 2010.I am currently working as a Platform Engineer at Toplyne, and I was previously at Gojek. I have worked with the FOSSi Foundation as part of the Google Summer of Code in 2017 and the Fedora Project as part of the Google Summer of Code in 2018. I am an active contributor to the Fedora Project, FOSSi Foundation, Elastic, and numerous other open-source projects.",
+    "links": [],
+    "sessions": [
+      "Peeking under the hood of API instrumentation agents"
+    ],
+    "title": "Computer Whisperer",
+    "company": ""
+  },
+  {
+    "name": "Nitin Rathee",
+    "tagline": "SDE-II at Microsoft",
+    "bio": "Nitin Rathee is an enthusiastic and passionate Software Engineer II at Microsoft and he graduated with distinction from National Institute of Technology, India. His professional trajectory is marked by transformative contributions to cutting-edge projects that redefine the boundaries of technology. He is passionate about open source outside of his 9 to 5. He has guided and mentored hundreds of students in advancing their technology skills and career paths. Embracing the collaborative spirit of the open source community, he aims to thrive in an ecosystem where creativity knows no bounds and innovation flourishes.",
+    "links": [],
+    "sessions": [
+      "PydanticAI Demystified: Building Smarter Generative AI Systems"
+    ],
+    "title": "SDE-II",
+    "company": "Microsoft"
+  },
+  {
+    "name": "Michelle Sandford",
+    "tagline": "Microsoft Developer Engagement Lead Asia",
+    "bio": "I live at the heart of the coding community and help drive awareness and engagement as a developer advocate and technology evangelist. I present at around 50 Conferences and Events around the world each year on AI, Azure, GitHub, Open Source, GameDev and LinkedIn (Including NDC Oslo, London, Copenhagen, Porto, Melbourne; Techorama BE & NL; DDDPerth; GCAP; Google Dev Fest, MS TechReady, MS GeekReady, MS Ignite etc). I judge hackathons and encourage the next generation into technology careers. In 2023 I became the host of the Microsoft ANZ web show - New Breakpoint, which is a show for developers by developers. I am also a co-organiser for the Rust Perth Community Group. I was the #1 Microsoft Social Seller (highest engagement) on LinkedIn for several years and remain #1 SSI rank in team, top 1% in industry and top 1% in network. I run the Microsoft Student Accelerator Program for ANZ encouraging emerging developers to build on Azure.",
+    "links": [],
+    "sessions": [
+      "Overcoming Your Imposter Syndrome with GitHub Copilot*"
+    ],
+    "title": "Microsoft Developer Engagement Lead Asia",
+    "company": ""
+  },
+  {
+    "name": "Utkarsh Umarye",
+    "tagline": "Data Scientist at Battery Smart",
+    "bio": "I'm a Data Scientist at Battery Smart, where I build real-time ML systems for India's largest EV battery-swapping network. My work focuses on face authentication, IoT telemetry analysis, and edge deployments — all powered by scalable Python pipelines. With over 4 years of experience, I enjoy turning real-world problems into production-ready machine learning solutions that are fast, reliable, and impactful.",
+    "links": [],
+    "sessions": [
+      "Pings, Patterns & Python: Making Sense of 300 Million IoT Events a Day"
+    ],
+    "title": "Data Scientist",
+    "company": "Battery Smart"
+  },
+  {
+    "name": "Prem Chotepanit",
+    "tagline": "Senior Data Scientist at Egg Digital",
+    "bio": "I'm a data scientist who owns the Facebook page \"Data Karate - ดาต้าคาราเต้\". My Kaggle rank is \"Grand Master\"Ref: https://www.kaggle.com/batpremAs a data scientist, I'm surely interested in machine learning and Python. Moreover, I love to create a solution that solves the real-world problems using my software engineering and my special skill ;)",
+    "links": [],
+    "sessions": [
+      "Create agentic financial solution using MCP and A2A"
+    ],
+    "title": "Senior Data Scientist",
+    "company": "Egg Digital"
+  },
+  {
+    "name": "Alyssa Coghlan",
+    "tagline": "CPython Core Developer & PSF Fellow",
+    "bio": "Alyssa has been a CPython core contributor since 2005, and served on the inaugural Python Steering Council in 2019. She was the default approval delegate for Python packaging interoperability PEPs from 2013 to 2018. She was elected for two terms on the Python Software Foundation Board of Directors (2014-2016), and founded the PyCon Australia Education Seminar in 2015. Professionally, Alyssa's career has spanned high frequency radio communications in the Australian defence sector, automated hardware integration testing infrastructure for Red Hat Enterprise Linux, remote management and monitoring of global EV fast charging systems, and, most recently, enabling local execution of generative AI language models with LM Studio.",
+    "links": [],
+    "sessions": [
+      "Do you want to get more involved in open source?"
+    ],
+    "title": "CPython Core Developer & PSF Fellow",
+    "company": ""
+  }
+]

@@ -3,8 +3,8 @@
 ## Overview
 This document contains a list of speaker posts that have been reviewed for PyCon Thailand 2025 social media campaign.
 
-**Total Reviewed: 6 posts**  
-**Review Date: January 19, 2025**
+**Total Reviewed: 8 posts**  
+**Review Date: January 20, 2025**
 
 ## ✅ Reviewed Posts
 
@@ -37,6 +37,16 @@ This document contains a list of speaker posts that have been reviewed for PyCon
 - **Speaker:** Chiu
 - **File:** [chiu-how-we-built-an-entire-bank-from-scratch-with-python.md](https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/chiu-how-we-built-an-entire-bank-from-scratch-with-python.md)
 - **Topic:** Enterprise Python Development
+
+### 7. Practical in Python Observability
+- **Speaker:** Nimsaeng
+- **File:** [jirayut-nimsaeng-practical-in-python-observability.md](https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/jirayut-nimsaeng-practical-in-python-observability.md)
+- **Topic:** DevOps & Observability
+
+### 8. What's Really Going on in Your Model? A Python Guide to Explainable AI
+- **Speaker:** Misra
+- **File:** [misra-explainable-ai-guide.md](https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/misra-explainable-ai-guide.md)
+- **Topic:** Explainable AI
 
 ## Quick Links
 All posts can be found in the [posts directory](https://github.com/NuttakitDW/yolo-agent/tree/project/pyconth-2025/posts).

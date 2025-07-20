@@ -20,7 +20,7 @@ async function scrapePyConSpeakers() {
     });
 
     // Wait for iframe to load since this is an embedded view
-    await page.waitForTimeout(3000);
+    await new Promise(resolve => setTimeout(resolve, 3000));
     
     // Check if content is in an iframe
     const frames = page.frames();
@@ -89,7 +89,7 @@ async function scrapePyConSpeakers() {
         }
         
         // Small delay to ensure modal is fully loaded
-        await targetFrame.waitForTimeout(1000);
+        await new Promise(resolve => setTimeout(resolve, 1000));
 
         // Extract speaker information from modal
         const speakerInfo = await targetFrame.evaluate(() => {
@@ -154,7 +154,7 @@ async function scrapePyConSpeakers() {
         }
 
         // Small delay between speakers to avoid rate limiting
-        await page.waitForTimeout(500);
+        await new Promise(resolve => setTimeout(resolve, 500));
 
       } catch (error) {
         console.error(`❌ Error processing speaker ${i + 1}:`, error.message);
@@ -164,7 +164,7 @@ async function scrapePyConSpeakers() {
           const closeButton = await targetFrame.$('.sz-modal__close, .sz-speaker-modal__close, .modal-close, .close');
           if (closeButton) {
             await closeButton.click();
-            await page.waitForTimeout(500);
+            await new Promise(resolve => setTimeout(resolve, 500));
           }
         } catch (closeError) {
           // Ignore close errors
