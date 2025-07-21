@@ -44,8 +44,8 @@ To track which speaker posts still need review, I'll maintain this checklist bas
 - [x] misra-explainable-ai-guide (Jan 20)
 
 #### ⏳ Pending Review (24)
-- [ ] chotepanit-create-agentic-financial-solution-using-mcp-and-a2a
-- [ ] coghlan-do-you-want-to-get-more-involved-in-open-source
+- [x] chotepanit-create-agentic-financial-solution-using-mcp-and-a2a
+- [x] coghlan-do-you-want-to-get-more-involved-in-open-source
 - [ ] flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom
 - [ ] garcia-whats-new-in-pandas-30
 - [ ] hirata-transform-ml-apis-mcp
