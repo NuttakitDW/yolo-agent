@@ -1,0 +1,27 @@
+{
+  "name": "unite-agent",
+  "version": "1.0.0",
+  "description": "A Claude Code setup to help prepare hackathon projects efficiently.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NuttakitDW/yolo-agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/NuttakitDW/yolo-agent/issues"
+  },
+  "homepage": "https://github.com/NuttakitDW/yolo-agent#readme",
+  "dependencies": {
+    "puppeteer": "^24.14.0"
+  }
+}
