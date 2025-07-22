@@ -1,5 +1,22 @@
 # PyCon Thailand 2025 Speaker Post Reviews
 
+## Date: January 22, 2025 - New Reviews Completed
+
+### Newly Reviewed Posts
+Today I reviewed the following 4 speaker posts:
+
+1. **husaini-the-art-of-simplicity-pythons-syntactic-sugar** - The Art of Simplicity: Python's Syntactic Sugar? by Thohirah Husaini
+2. **srirattanamet-python-system** - Python as a system language: How Python is used in a Linux system by Ratchanan Srirattanamet
+3. **chotepanit-create-agentic-financial-solution-using-mcp-and-a2a** - Create agentic financial solution using MCP and A2A by Prem Chotepanit
+4. **garcia-whats-new-in-pandas-30** - What's new in pandas 3.0 by Marc Garcia
+
+### Summary
+- Created new post for Thohirah Husaini (previously missing)
+- Moved all 4 posts from working-on-it to reviewed folder
+- Total reviewed posts now: 12 (was 8, added 4)
+
+---
+
 ## Date: January 20, 2025 - Update
 
 ### New Activities
@@ -33,7 +50,7 @@ Today I reviewed the following speaker posts:
 ### Review Checklist
 To track which speaker posts still need review, I'll maintain this checklist based on all available speaker posts.
 
-#### ✅ Reviewed (8)
+#### ✅ Reviewed (12)
 - [x] acosta-ai-driven-automation
 - [x] anirudha-bringing-python-to-webassembly
 - [x] benoy-how-i-ended-up-maintaining-a-python-package-with-1m-downloads
@@ -42,12 +59,14 @@ To track which speaker posts still need review, I'll maintain this checklist bas
 - [x] chiu-how-we-built-an-entire-bank-from-scratch-with-python
 - [x] jirayut-nimsaeng-practical-in-python-observability (NEW - Jan 20)
 - [x] misra-explainable-ai-guide (Jan 20)
+- [x] husaini-the-art-of-simplicity-pythons-syntactic-sugar (NEW - Jan 22)
+- [x] srirattanamet-python-system (Jan 22)
+- [x] chotepanit-create-agentic-financial-solution-using-mcp-and-a2a (Jan 22)
+- [x] garcia-whats-new-in-pandas-30 (Jan 22)
 
-#### ⏳ Pending Review (24)
-- [x] chotepanit-create-agentic-financial-solution-using-mcp-and-a2a
+#### ⏳ Pending Review (21)
 - [x] coghlan-do-you-want-to-get-more-involved-in-open-source
 - [ ] flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom
-- [ ] garcia-whats-new-in-pandas-30
 - [ ] hirata-transform-ml-apis-mcp
 - [ ] kharinskii-scratch-to-scale-recommendation
 - [ ] kirillov-streamlit-azure-deployment
@@ -70,9 +89,9 @@ To track which speaker posts still need review, I'll maintain this checklist bas
 - [ ] vorathammathorn-quantum-ai
 
 ### Progress Summary
-- Total speaker posts: 32 (31 original + 1 new)
-- Reviewed: 8 (25%)
-- Remaining: 24 (75%)
+- Total speaker posts: 33 (31 original + 2 new)
+- Reviewed: 12 (36%)
+- Remaining: 21 (64%)
 
 ### Notes
 - Started reviewing speaker posts for PyCon Thailand 2025
