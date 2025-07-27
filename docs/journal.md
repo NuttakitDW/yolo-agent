@@ -1,5 +1,34 @@
 # PyCon Thailand 2025 Speaker Post Reviews
 
+## Date: January 27, 2025 - Additional Reviews Completed
+
+### Newly Reviewed Posts
+Today I reviewed and moved the following 6 speaker posts to the reviewed folder:
+
+1. **coghlan-do-you-want-to-get-more-involved-in-open-source** - Do You Want to Get More Involved in Open Source? by Nick Coghlan
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/coghlan-do-you-want-to-get-more-involved-in-open-source.md
+
+2. **flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom** - Python Portfolios and Pull Requests: Building a Culture of Code in the Classroom by Dylan Flower
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom.md
+
+3. **hirata-transform-ml-apis-mcp** - How to Transform ML APIs into an LLM-compatible MCP server with Python by Anderson Hirata
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/hirata-transform-ml-apis-mcp.md
+
+4. **kharinskii-scratch-to-scale-recommendation** - From Scratch to Scale: Open Source Stack for Recommendation Systems by Arsenii Kharinskii
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/kharinskii-scratch-to-scale-recommendation.md
+
+5. **kirillov-streamlit-azure-deployment** - Deploying & Operating Streamlit Web App in Azure by Arsenii Kirillov
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/kirillov-streamlit-azure-deployment.md
+
+6. **kothari-python-logging-observability** - Revolutionizing Observability: Python Logging for Asynchronous Cloud-Native Systems by Saumitra Kothari
+   - GitHub: https://github.com/NuttakitDW/yolo-agent/blob/project/pyconth-2025/posts/reviewed/kothari-python-logging-observability.md
+
+### Summary
+- Moved 6 posts from waiting-for-review to reviewed folder
+- Total reviewed posts now: 18 (was 12, added 6)
+
+---
+
 ## Date: January 22, 2025 - New Reviews Completed
 
 ### Newly Reviewed Posts
@@ -50,7 +79,7 @@ Today I reviewed the following speaker posts:
 ### Review Checklist
 To track which speaker posts still need review, I'll maintain this checklist based on all available speaker posts.
 
-#### ✅ Reviewed (12)
+#### ✅ Reviewed (18)
 - [x] acosta-ai-driven-automation
 - [x] anirudha-bringing-python-to-webassembly
 - [x] benoy-how-i-ended-up-maintaining-a-python-package-with-1m-downloads
@@ -63,14 +92,14 @@ To track which speaker posts still need review, I'll maintain this checklist bas
 - [x] srirattanamet-python-system (Jan 22)
 - [x] chotepanit-create-agentic-financial-solution-using-mcp-and-a2a (Jan 22)
 - [x] garcia-whats-new-in-pandas-30 (Jan 22)
+- [x] coghlan-do-you-want-to-get-more-involved-in-open-source (Jan 27)
+- [x] flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom (Jan 27)
+- [x] hirata-transform-ml-apis-mcp (Jan 27)
+- [x] kharinskii-scratch-to-scale-recommendation (Jan 27)
+- [x] kirillov-streamlit-azure-deployment (Jan 27)
+- [x] kothari-python-logging-observability (Jan 27)
 
-#### ⏳ Pending Review (21)
-- [x] coghlan-do-you-want-to-get-more-involved-in-open-source
-- [ ] flower-python-portfolios-and-pull-requests-building-a-culture-of-code-in-the-classroom
-- [ ] hirata-transform-ml-apis-mcp
-- [ ] kharinskii-scratch-to-scale-recommendation
-- [ ] kirillov-streamlit-azure-deployment
-- [ ] kothari-python-logging-observability
+#### ⏳ Pending Review (15)
 - [ ] liashkov-spatial-data-traffic-safety
 - [ ] lokko-ai-open-source-project-mgmt
 - [ ] mahapatra-api-instrumentation-agents
@@ -90,8 +119,8 @@ To track which speaker posts still need review, I'll maintain this checklist bas
 
 ### Progress Summary
 - Total speaker posts: 33 (31 original + 2 new)
-- Reviewed: 12 (36%)
-- Remaining: 21 (64%)
+- Reviewed: 18 (55%)
+- Remaining: 15 (45%)
 
 ### Notes
 - Started reviewing speaker posts for PyCon Thailand 2025
