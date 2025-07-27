@@ -103,7 +103,7 @@
 - [x] Study 1inch Fusion+ architecture
 - [x] Understand cross-chain swap mechanics
 - [x] Pick target chain and study its basics
-- [ ] Set up development environment
+- [x] Set up development environment
 
 ### Week 2: Deep Dive
 - [ ] Master target chain's programming language
