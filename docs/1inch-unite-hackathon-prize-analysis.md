@@ -100,9 +100,9 @@
 ## Quick Start Checklist
 
 ### Week 1: Foundation
-- [ ] Study 1inch Fusion+ architecture
-- [ ] Understand cross-chain swap mechanics
-- [ ] Pick target chain and study its basics
+- [x] Study 1inch Fusion+ architecture
+- [x] Understand cross-chain swap mechanics
+- [x] Pick target chain and study its basics
 - [ ] Set up development environment
 
 ### Week 2: Deep Dive
