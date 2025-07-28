@@ -1,5 +1,8 @@
 # 1inch Unite Hackathon - Bitcoin Prize Track Official Requirements
 
+**Event Dates**: July 25 – August 6, 2025  
+**Submission Deadline**: August 3, 2025 at 4:00 PM  
+
 ## Prize: Extend Fusion+ to Bitcoin (Doge/LTC/etc.) — $32,000
 
 ### Prize Distribution
