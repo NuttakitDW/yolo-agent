@@ -1,0 +1,1234 @@
+openapi: 3.0.3
+info:
+  title: Thunder Portal Bitcoin HTLC Service API
+  description: |
+    RESTful API for Bitcoin atomic swaps using Hash Time Locked Contracts (HTLCs).
+    Designed for seamless integration with 1inch Fusion+ resolvers.
+    
+    ## Overview
+    This API enables non-custodial Bitcoin atomic swaps through HTLC contracts,
+    supporting submarine swaps (on-chain to Lightning), reverse submarine swaps
+    (Lightning to on-chain), and chain-to-chain swaps.
+    
+    ## Authentication
+    All endpoints require API key authentication via the `X-API-Key` header.
+    
+    ## Webhooks
+    Subscribe to real-time updates for swap status changes via webhooks.
+  version: 1.0.0
+  contact:
+    name: Thunder Portal Support
+    email: support@thunderportal.io
+    url: https://thunderportal.io
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.thunderportal.io/v1
+    description: Production server
+  - url: https://testnet.api.thunderportal.io/v1
+    description: Testnet server
+
+security:
+  - ApiKeyAuth: []
+
+tags:
+  - name: Swaps
+    description: Create and manage atomic swaps
+  - name: HTLCs
+    description: Direct HTLC contract operations
+  - name: Quotes
+    description: Get swap quotes and fee estimates
+  - name: Status
+    description: Monitor swap and transaction status
+  - name: System
+    description: System health and configuration
+
+paths:
+  /pairs:
+    get:
+      tags:
+        - System
+      summary: Get supported trading pairs
+      description: Returns all supported swap pairs with current limits and fees
+      operationId: getPairs
+      responses:
+        '200':
+          description: List of supported pairs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pairs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TradingPair'
+
+  /quotes:
+    post:
+      tags:
+        - Quotes
+      summary: Get swap quote
+      description: Calculate fees and amounts for a potential swap
+      operationId: createQuote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+      responses:
+        '200':
+          description: Swap quote details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QuoteResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '503':
+          $ref: '#/components/responses/ServiceUnavailable'
+
+  /swaps/submarine:
+    post:
+      tags:
+        - Swaps
+      summary: Create submarine swap (Chain → Lightning)
+      description: |
+        Creates a new submarine swap to move Bitcoin from on-chain to Lightning Network.
+        The user sends BTC on-chain and receives it on Lightning.
+      operationId: createSubmarineSwap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubmarineSwapRequest'
+      responses:
+        '201':
+          description: Submarine swap created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubmarineSwapResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '402':
+          $ref: '#/components/responses/InsufficientLiquidity'
+
+  /swaps/reverse:
+    post:
+      tags:
+        - Swaps
+      summary: Create reverse swap (Lightning → Chain)
+      description: |
+        Creates a new reverse submarine swap to move Bitcoin from Lightning to on-chain.
+        The user sends BTC via Lightning and receives it on-chain.
+      operationId: createReverseSwap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReverseSwapRequest'
+      responses:
+        '201':
+          description: Reverse swap created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReverseSwapResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '402':
+          $ref: '#/components/responses/InsufficientLiquidity'
+
+  /swaps/chain:
+    post:
+      tags:
+        - Swaps
+      summary: Create chain swap (Chain → Chain)
+      description: |
+        Creates a new chain-to-chain swap between different Bitcoin layers
+        (e.g., Bitcoin mainnet to Liquid Network).
+      operationId: createChainSwap
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChainSwapRequest'
+      responses:
+        '201':
+          description: Chain swap created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChainSwapResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '402':
+          $ref: '#/components/responses/InsufficientLiquidity'
+
+  /swaps/{swapId}:
+    get:
+      tags:
+        - Status
+      summary: Get swap details
+      description: Retrieve current status and details of a specific swap
+      operationId: getSwap
+      parameters:
+        - $ref: '#/components/parameters/SwapId'
+      responses:
+        '200':
+          description: Swap details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapDetails'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /swaps/{swapId}/refund:
+    post:
+      tags:
+        - Swaps
+      summary: Initiate swap refund
+      description: |
+        Request a refund for a failed or expired swap.
+        Only available after the timeout period has passed.
+      operationId: refundSwap
+      parameters:
+        - $ref: '#/components/parameters/SwapId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundRequest'
+      responses:
+        '200':
+          description: Refund initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: Swap not eligible for refund
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /htlc/{htlcId}/claim:
+    post:
+      tags:
+        - HTLCs
+      summary: Claim HTLC funds
+      description: |
+        Claim funds from an HTLC by revealing the preimage.
+        Used by Fusion+ resolvers to complete atomic swaps.
+      operationId: claimHtlc
+      parameters:
+        - $ref: '#/components/parameters/HtlcId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClaimRequest'
+      responses:
+        '200':
+          description: HTLC claimed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClaimResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          description: HTLC already claimed or expired
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /htlc/{htlcId}/cooperative-close:
+    post:
+      tags:
+        - HTLCs
+      summary: Cooperative HTLC closure
+      description: |
+        Close an HTLC cooperatively using MuSig2 signatures.
+        More efficient than unilateral claiming.
+      operationId: cooperativeClose
+      parameters:
+        - $ref: '#/components/parameters/HtlcId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CooperativeCloseRequest'
+      responses:
+        '200':
+          description: Cooperative close successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CooperativeCloseResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /transactions/{txId}/status:
+    get:
+      tags:
+        - Status
+      summary: Get transaction status
+      description: Check the status of a Bitcoin transaction
+      operationId: getTransactionStatus
+      parameters:
+        - name: txId
+          in: path
+          required: true
+          description: Bitcoin transaction ID
+          schema:
+            type: string
+            pattern: '^[a-fA-F0-9]{64}$'
+      responses:
+        '200':
+          description: Transaction status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionStatus'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /webhooks:
+    post:
+      tags:
+        - System
+      summary: Register webhook
+      description: Register a webhook URL for receiving swap status updates
+      operationId: registerWebhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookRegistration'
+      responses:
+        '201':
+          description: Webhook registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookRegistrationResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+
+  /webhooks/{webhookId}:
+    delete:
+      tags:
+        - System
+      summary: Unregister webhook
+      description: Remove a registered webhook
+      operationId: deleteWebhook
+      parameters:
+        - name: webhookId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Webhook deleted successfully
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /health:
+    get:
+      tags:
+        - System
+      summary: Health check
+      description: Check service health and connectivity
+      operationId: healthCheck
+      security: []
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+  parameters:
+    SwapId:
+      name: swapId
+      in: path
+      required: true
+      description: Unique swap identifier
+      schema:
+        type: string
+        format: uuid
+        
+    HtlcId:
+      name: htlcId
+      in: path
+      required: true
+      description: HTLC contract identifier
+      schema:
+        type: string
+        format: uuid
+
+  schemas:
+    TradingPair:
+      type: object
+      required:
+        - from
+        - to
+        - rate
+        - minAmount
+        - maxAmount
+        - minerFee
+        - serviceFee
+      properties:
+        from:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+          description: Source asset
+        to:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+          description: Destination asset
+        rate:
+          type: number
+          format: double
+          description: Exchange rate
+          example: 0.99
+        minAmount:
+          type: integer
+          format: int64
+          description: Minimum swap amount in satoshis
+          example: 10000
+        maxAmount:
+          type: integer
+          format: int64
+          description: Maximum swap amount in satoshis
+          example: 100000000
+        minerFee:
+          type: integer
+          format: int64
+          description: Miner fee in satoshis
+          example: 1000
+        serviceFee:
+          type: number
+          format: double
+          description: Service fee percentage
+          example: 0.5
+
+    QuoteRequest:
+      type: object
+      required:
+        - from
+        - to
+        - amount
+      properties:
+        from:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+          description: Source asset
+        to:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+          description: Destination asset
+        amount:
+          type: integer
+          format: int64
+          description: Amount in satoshis
+          example: 1000000
+        invoice:
+          type: string
+          description: Lightning invoice (for submarine swaps)
+
+    QuoteResponse:
+      type: object
+      required:
+        - id
+        - from
+        - to
+        - fromAmount
+        - toAmount
+        - minerFee
+        - serviceFee
+        - total
+        - expiresAt
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Quote ID
+        from:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+        to:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+        fromAmount:
+          type: integer
+          format: int64
+          description: Amount to send in satoshis
+        toAmount:
+          type: integer
+          format: int64
+          description: Amount to receive in satoshis
+        minerFee:
+          type: integer
+          format: int64
+          description: Total miner fees in satoshis
+        serviceFee:
+          type: integer
+          format: int64
+          description: Service fee in satoshis
+        total:
+          type: integer
+          format: int64
+          description: Total amount needed in satoshis
+        expiresAt:
+          type: string
+          format: date-time
+          description: Quote expiration time
+
+    SubmarineSwapRequest:
+      type: object
+      required:
+        - invoice
+        - refundPublicKey
+      properties:
+        invoice:
+          type: string
+          description: Lightning invoice to pay
+          example: "lnbc1..."
+        refundPublicKey:
+          type: string
+          description: Public key for refund address (hex encoded)
+          pattern: '^[a-fA-F0-9]{66}$'
+        quoteId:
+          type: string
+          format: uuid
+          description: Optional quote ID to use
+        webhookUrl:
+          type: string
+          format: uri
+          description: Webhook URL for status updates
+        metadata:
+          type: object
+          description: Optional metadata for Fusion+ integration
+          additionalProperties: true
+
+    SubmarineSwapResponse:
+      type: object
+      required:
+        - swapId
+        - htlcId
+        - depositAddress
+        - expectedAmount
+        - timeoutBlockHeight
+        - redeemScript
+      properties:
+        swapId:
+          type: string
+          format: uuid
+          description: Unique swap identifier
+        htlcId:
+          type: string
+          format: uuid
+          description: HTLC contract identifier
+        depositAddress:
+          type: string
+          description: Bitcoin address to send funds to
+          example: "bc1q..."
+        expectedAmount:
+          type: integer
+          format: int64
+          description: Expected amount in satoshis
+        timeoutBlockHeight:
+          type: integer
+          description: Block height when HTLC expires
+          example: 750000
+        redeemScript:
+          type: string
+          description: HTLC redeem script (hex encoded)
+        bip21Uri:
+          type: string
+          description: BIP21 payment URI
+          example: "bitcoin:bc1q...?amount=0.01"
+
+    ReverseSwapRequest:
+      type: object
+      required:
+        - amount
+        - claimPublicKey
+        - preimageHash
+      properties:
+        amount:
+          type: integer
+          format: int64
+          description: Amount to swap in satoshis
+        claimPublicKey:
+          type: string
+          description: Public key for claiming on-chain funds (hex encoded)
+          pattern: '^[a-fA-F0-9]{66}$'
+        preimageHash:
+          type: string
+          description: SHA256 hash of preimage (hex encoded)
+          pattern: '^[a-fA-F0-9]{64}$'
+        destinationAddress:
+          type: string
+          description: Optional on-chain destination address
+          example: "bc1q..."
+        quoteId:
+          type: string
+          format: uuid
+          description: Optional quote ID to use
+        webhookUrl:
+          type: string
+          format: uri
+          description: Webhook URL for status updates
+        metadata:
+          type: object
+          description: Optional metadata for Fusion+ integration
+          additionalProperties: true
+
+    ReverseSwapResponse:
+      type: object
+      required:
+        - swapId
+        - htlcId
+        - invoice
+        - lockupAddress
+        - timeoutBlockHeight
+        - blindingKey
+      properties:
+        swapId:
+          type: string
+          format: uuid
+          description: Unique swap identifier
+        htlcId:
+          type: string
+          format: uuid
+          description: HTLC contract identifier
+        invoice:
+          type: string
+          description: Lightning invoice to pay
+          example: "lnbc1..."
+        lockupAddress:
+          type: string
+          description: On-chain HTLC address
+          example: "bc1q..."
+        timeoutBlockHeight:
+          type: integer
+          description: Block height when HTLC expires
+        blindingKey:
+          type: string
+          description: Taproot blinding key (hex encoded)
+          pattern: '^[a-fA-F0-9]{64}$'
+
+    ChainSwapRequest:
+      type: object
+      required:
+        - from
+        - to
+        - amount
+        - claimPublicKey
+        - refundPublicKey
+        - preimageHash
+      properties:
+        from:
+          type: string
+          enum: [BTC, L-BTC]
+          description: Source chain
+        to:
+          type: string
+          enum: [BTC, L-BTC]
+          description: Destination chain
+        amount:
+          type: integer
+          format: int64
+          description: Amount to swap in satoshis
+        claimPublicKey:
+          type: string
+          description: Public key for claiming funds (hex encoded)
+          pattern: '^[a-fA-F0-9]{66}$'
+        refundPublicKey:
+          type: string
+          description: Public key for refund (hex encoded)
+          pattern: '^[a-fA-F0-9]{66}$'
+        preimageHash:
+          type: string
+          description: SHA256 hash of preimage (hex encoded)
+          pattern: '^[a-fA-F0-9]{64}$'
+        quoteId:
+          type: string
+          format: uuid
+          description: Optional quote ID to use
+        webhookUrl:
+          type: string
+          format: uri
+          description: Webhook URL for status updates
+        metadata:
+          type: object
+          description: Optional metadata for Fusion+ integration
+          additionalProperties: true
+
+    ChainSwapResponse:
+      type: object
+      required:
+        - swapId
+        - userHtlcId
+        - serverHtlcId
+        - depositAddress
+        - expectedAmount
+        - timeoutBlockHeight
+      properties:
+        swapId:
+          type: string
+          format: uuid
+          description: Unique swap identifier
+        userHtlcId:
+          type: string
+          format: uuid
+          description: User's HTLC contract identifier
+        serverHtlcId:
+          type: string
+          format: uuid
+          description: Server's HTLC contract identifier
+        depositAddress:
+          type: string
+          description: Address to send funds to
+        expectedAmount:
+          type: integer
+          format: int64
+          description: Expected amount in satoshis
+        timeoutBlockHeight:
+          type: integer
+          description: Block height when HTLC expires
+
+    SwapDetails:
+      type: object
+      required:
+        - swapId
+        - type
+        - status
+        - from
+        - to
+        - fromAmount
+        - toAmount
+        - createdAt
+        - updatedAt
+      properties:
+        swapId:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum: [submarine, reverse, chain]
+        status:
+          $ref: '#/components/schemas/SwapStatus'
+        from:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+        to:
+          type: string
+          enum: [BTC, L-BTC, LN-BTC]
+        fromAmount:
+          type: integer
+          format: int64
+          description: Amount sent in satoshis
+        toAmount:
+          type: integer
+          format: int64
+          description: Amount received in satoshis
+        htlcDetails:
+          $ref: '#/components/schemas/HtlcDetails'
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        error:
+          type: string
+          description: Error message if swap failed
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    SwapStatus:
+      type: string
+      enum:
+        - created
+        - waiting_for_deposit
+        - deposit_confirmed
+        - htlc_created
+        - invoice_pending
+        - invoice_paid
+        - claim_pending
+        - claimed
+        - refund_pending
+        - refunded
+        - expired
+        - failed
+      description: |
+        Swap status progression:
+        - created: Swap created, waiting for user action
+        - waiting_for_deposit: Waiting for on-chain deposit
+        - deposit_confirmed: Deposit confirmed on-chain
+        - htlc_created: HTLC contract created
+        - invoice_pending: Waiting for Lightning invoice payment
+        - invoice_paid: Lightning invoice paid
+        - claim_pending: Claim transaction broadcast
+        - claimed: Swap completed successfully
+        - refund_pending: Refund transaction broadcast
+        - refunded: Funds refunded to user
+        - expired: Swap expired without completion
+        - failed: Swap failed due to error
+
+    HtlcDetails:
+      type: object
+      required:
+        - htlcId
+        - address
+        - redeemScript
+        - timeoutBlockHeight
+        - value
+      properties:
+        htlcId:
+          type: string
+          format: uuid
+        address:
+          type: string
+          description: HTLC contract address
+        redeemScript:
+          type: string
+          description: HTLC redeem script (hex encoded)
+        timeoutBlockHeight:
+          type: integer
+          description: Block height when HTLC expires
+        value:
+          type: integer
+          format: int64
+          description: HTLC value in satoshis
+        fundingTxId:
+          type: string
+          description: Funding transaction ID
+        claimTxId:
+          type: string
+          description: Claim transaction ID
+        refundTxId:
+          type: string
+          description: Refund transaction ID
+
+    Transaction:
+      type: object
+      required:
+        - txId
+        - type
+        - amount
+        - status
+        - timestamp
+      properties:
+        txId:
+          type: string
+          pattern: '^[a-fA-F0-9]{64}$'
+        type:
+          type: string
+          enum: [deposit, claim, refund]
+        amount:
+          type: integer
+          format: int64
+          description: Amount in satoshis
+        status:
+          type: string
+          enum: [pending, confirmed, failed]
+        confirmations:
+          type: integer
+          description: Number of confirmations
+        blockHeight:
+          type: integer
+          description: Block height of confirmation
+        timestamp:
+          type: string
+          format: date-time
+
+    RefundRequest:
+      type: object
+      required:
+        - refundAddress
+        - signature
+      properties:
+        refundAddress:
+          type: string
+          description: Bitcoin address for refund
+          example: "bc1q..."
+        signature:
+          type: string
+          description: Signature proving ownership of refund key (hex encoded)
+          pattern: '^[a-fA-F0-9]{128,144}$'
+        feeRate:
+          type: integer
+          description: Optional fee rate in sat/vB
+          minimum: 1
+          maximum: 1000
+
+    RefundResponse:
+      type: object
+      required:
+        - refundTxId
+        - refundAddress
+        - amount
+      properties:
+        refundTxId:
+          type: string
+          pattern: '^[a-fA-F0-9]{64}$'
+          description: Refund transaction ID
+        refundAddress:
+          type: string
+          description: Address funds were refunded to
+        amount:
+          type: integer
+          format: int64
+          description: Refunded amount in satoshis
+
+    ClaimRequest:
+      type: object
+      required:
+        - preimage
+      properties:
+        preimage:
+          type: string
+          description: Preimage to claim HTLC (hex encoded)
+          pattern: '^[a-fA-F0-9]{64}$'
+        claimAddress:
+          type: string
+          description: Optional address to claim funds to
+          example: "bc1q..."
+        feeRate:
+          type: integer
+          description: Optional fee rate in sat/vB
+          minimum: 1
+          maximum: 1000
+
+    ClaimResponse:
+      type: object
+      required:
+        - claimTxId
+        - claimAddress
+        - amount
+      properties:
+        claimTxId:
+          type: string
+          pattern: '^[a-fA-F0-9]{64}$'
+          description: Claim transaction ID
+        claimAddress:
+          type: string
+          description: Address funds were claimed to
+        amount:
+          type: integer
+          format: int64
+          description: Claimed amount in satoshis
+
+    CooperativeCloseRequest:
+      type: object
+      required:
+        - preimage
+        - partialSignature
+        - nonce
+      properties:
+        preimage:
+          type: string
+          description: Preimage to claim HTLC (hex encoded)
+          pattern: '^[a-fA-F0-9]{64}$'
+        partialSignature:
+          type: string
+          description: MuSig2 partial signature (hex encoded)
+          pattern: '^[a-fA-F0-9]{128}$'
+        nonce:
+          type: string
+          description: MuSig2 nonce (hex encoded)
+          pattern: '^[a-fA-F0-9]{66}$'
+
+    CooperativeCloseResponse:
+      type: object
+      required:
+        - txId
+        - signature
+      properties:
+        txId:
+          type: string
+          pattern: '^[a-fA-F0-9]{64}$'
+          description: Cooperative close transaction ID
+        signature:
+          type: string
+          description: Complete MuSig2 signature (hex encoded)
+          pattern: '^[a-fA-F0-9]{128}$'
+
+    TransactionStatus:
+      type: object
+      required:
+        - txId
+        - status
+        - blockHeight
+        - confirmations
+      properties:
+        txId:
+          type: string
+          pattern: '^[a-fA-F0-9]{64}$'
+        status:
+          type: string
+          enum: [pending, confirmed, failed]
+        blockHeight:
+          type: integer
+          nullable: true
+          description: Block height if confirmed
+        confirmations:
+          type: integer
+          description: Number of confirmations
+        fee:
+          type: integer
+          format: int64
+          description: Transaction fee in satoshis
+
+    WebhookRegistration:
+      type: object
+      required:
+        - url
+        - events
+      properties:
+        url:
+          type: string
+          format: uri
+          description: Webhook endpoint URL
+          example: "https://example.com/webhook"
+        events:
+          type: array
+          description: Events to subscribe to
+          items:
+            type: string
+            enum:
+              - swap.created
+              - swap.deposit.pending
+              - swap.deposit.confirmed
+              - swap.htlc.created
+              - swap.invoice.pending
+              - swap.invoice.paid
+              - swap.claim.pending
+              - swap.claimed
+              - swap.refund.pending
+              - swap.refunded
+              - swap.expired
+              - swap.failed
+          minItems: 1
+        secret:
+          type: string
+          description: Optional secret for HMAC signature verification
+          minLength: 32
+          maxLength: 64
+
+    WebhookRegistrationResponse:
+      type: object
+      required:
+        - webhookId
+        - url
+        - events
+        - createdAt
+      properties:
+        webhookId:
+          type: string
+          format: uuid
+          description: Unique webhook identifier
+        url:
+          type: string
+          format: uri
+        events:
+          type: array
+          items:
+            type: string
+        secret:
+          type: string
+          description: Generated secret if not provided
+        createdAt:
+          type: string
+          format: date-time
+
+    HealthStatus:
+      type: object
+      required:
+        - status
+        - version
+        - uptime
+        - bitcoin
+        - lightning
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+        version:
+          type: string
+          description: API version
+          example: "1.0.0"
+        uptime:
+          type: integer
+          description: Uptime in seconds
+        bitcoin:
+          type: object
+          properties:
+            connected:
+              type: boolean
+            blockHeight:
+              type: integer
+            network:
+              type: string
+              enum: [mainnet, testnet, regtest]
+        lightning:
+          type: object
+          properties:
+            connected:
+              type: boolean
+            nodeId:
+              type: string
+              description: Lightning node public key
+            channels:
+              type: integer
+              description: Number of active channels
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: "INVALID_INVOICE"
+        message:
+          type: string
+          description: Human-readable error message
+        details:
+          type: object
+          description: Additional error details
+          additionalProperties: true
+
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            InvalidInvoice:
+              value:
+                code: "INVALID_INVOICE"
+                message: "The provided Lightning invoice is invalid or expired"
+            InvalidAmount:
+              value:
+                code: "INVALID_AMOUNT"
+                message: "Amount must be between 10,000 and 100,000,000 satoshis"
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "NOT_FOUND"
+            message: "The requested resource was not found"
+
+    InsufficientLiquidity:
+      description: Insufficient liquidity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "INSUFFICIENT_LIQUIDITY"
+            message: "Not enough liquidity available for this swap"
+            details:
+              available: 50000000
+              requested: 100000000
+
+    ServiceUnavailable:
+      description: Service temporarily unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: "SERVICE_UNAVAILABLE"
+            message: "The service is temporarily unavailable. Please try again later."
+
+webhooks:
+  swapUpdate:
+    post:
+      summary: Swap status update
+      description: Webhook notification sent when swap status changes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - event
+                - swapId
+                - timestamp
+                - data
+              properties:
+                event:
+                  type: string
+                  description: Event type
+                  example: "swap.deposit.confirmed"
+                swapId:
+                  type: string
+                  format: uuid
+                  description: Swap identifier
+                timestamp:
+                  type: string
+                  format: date-time
+                  description: Event timestamp
+                data:
+                  $ref: '#/components/schemas/SwapDetails'
+                signature:
+                  type: string
+                  description: HMAC-SHA256 signature of the payload
+      responses:
+        '200':
+          description: Webhook processed successfully
+        '401':
+          description: Invalid signature
+        '500':
+          description: Webhook processing failed
