@@ -1,0 +1,40 @@
+{
+  "name": "thunder-portal-logo",
+  "version": "1.0.0",
+  "description": "Thunder Portal logo assets",
+  "scripts": {
+    "start": "remotion studio",
+    "render": "remotion still ThunderPortalLogo out/logo.png",
+    "render:square": "remotion still ThunderPortalLogoSquare out/logo-square.png",
+    "render:banner": "remotion still ThunderPortalLogoBanner out/logo-banner.png",
+    "render:all": "npm run render && npm run render:square && npm run render:banner",
+    "render:icon": "remotion still ThunderPortalLogoIcon out/logo-icon.png",
+    "render:pro": "remotion still ThunderPortalLogoPro out/logo-pro.png",
+    "render:pro-icon": "remotion still ThunderPortalLogoProIcon out/logo-pro-icon.png",
+    "render:minimal": "remotion still ThunderPortalLogoMinimal out/logo-minimal.png",
+    "render:ultimate": "remotion still ThunderPortalLogoUltimate out/logo-ultimate.png",
+    "render:ultimate-icon": "remotion still ThunderPortalLogoUltimateIcon out/logo-ultimate-icon.png",
+    "render:all-new": "npm run render:pro && npm run render:pro-icon && npm run render:minimal && npm run render:ultimate && npm run render:ultimate-icon",
+    "render:final": "remotion still Logo out/logo-main.png",
+    "render:final-dark": "remotion still LogoDark out/logo-dark.png",
+    "render:final-light": "remotion still LogoLight out/logo-light.png",
+    "render:final-icon": "remotion still LogoIcon out/logo-icon-transparent.png",
+    "render:final-icon-dark": "remotion still LogoIconDark out/logo-icon-dark.png",
+    "render:final-banner": "remotion still LogoBanner out/logo-banner-transparent.png",
+    "render:final-banner-dark": "remotion still LogoBannerDark out/logo-banner-dark.png",
+    "render:final-small": "remotion still LogoSquareSmall out/logo-small.png",
+    "render:final-favicon": "remotion still LogoFavicon out/favicon.png",
+    "render:all-final": "npm run render:final && npm run render:final-dark && npm run render:final-light && npm run render:final-icon && npm run render:final-icon-dark && npm run render:final-banner && npm run render:final-banner-dark && npm run render:final-small && npm run render:final-favicon"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.327",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "remotion": "^4.0.327"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  }
+}
