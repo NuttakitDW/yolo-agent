@@ -10,7 +10,7 @@
 ### Day 1: Core Infrastructure (8-10 hours)
 - [x] Fork 1inch cross-chain swap contracts (in evm-resolver)
 - [x] Set up local dev environment with Tenderly fork + Bitcoin regtest
-- [ ] Extend Fusion+ order structure for Bitcoin addresses
+- [x] Extend Fusion+ order structure for Bitcoin addresses
 - [ ] Deploy basic EscrowFactory on Tenderly fork
 - [ ] Connect Rust HTLC service to Bitcoin regtest
 - [ ] Test HTLC creation locally
