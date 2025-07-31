@@ -1,15 +1,48 @@
 # Thunder Portal Implementation Checklist
 
+## 📅 Development Strategy
+- **Phase 1**: Local Development (Tenderly + Bitcoin regtest)
+- **Phase 2**: Testnet Deployment
+- **Phase 3**: Mainnet Launch
+
+## 🚀 Quick MVP (3-Day Hackathon Focus)
+
+### Day 1: Core Infrastructure (8-10 hours)
+- [x] Fork 1inch cross-chain swap contracts (in evm-resolver)
+- [x] Set up local dev environment with Tenderly fork + Bitcoin regtest
+- [ ] Extend Fusion+ order structure for Bitcoin addresses
+- [ ] Deploy basic EscrowFactory on Tenderly fork
+- [ ] Connect Rust HTLC service to Bitcoin regtest
+- [ ] Test HTLC creation locally
+
+### Day 2: Integration & UI (8-10 hours)
+- [ ] Create minimal TypeScript resolver
+- [ ] Fork 1inch UI (essentials only)
+- [ ] Add Bitcoin wallet connection
+- [ ] Create BTC/ETH swap interface
+- [ ] **Mock UI visualizations**:
+  - [ ] Order chunking animation (100 chunks)
+  - [ ] Resolver matching visualization
+  - [ ] Step-by-step swap process
+  - [ ] Progress tracking
+
+### Day 3: Demo & Polish (8-10 hours)
+- [ ] Fix critical bugs
+- [ ] Create demo script
+- [ ] Record demo video
+- [ ] Polish UI for presentation
+- [ ] Prepare pitch deck (10 slides max)
+
 ## 🎯 Core Components
 
 ### 1. Fork 1inch Fusion+ Protocol
-- [ ] Fork 1inch Fusion+ repository
+- [x] Fork 1inch cross-chain swap contracts (in evm-resolver)
 - [ ] Add Bitcoin as supported asset type
 - [ ] Extend order structure with Bitcoin address fields
 - [ ] Add HTLC hash field to order metadata
 - [ ] Modify validation to accept Bitcoin addresses
 - [ ] Update matching engine for cross-chain orders
-- [ ] Implement order chunking (100 chunks per order)
+- [x] Order chunking already implemented (merkle tree for 100 chunks)
 - [ ] Handle longer Bitcoin settlement times
 
 ### 2. UI Development
@@ -252,9 +285,32 @@
 - [ ] User acceptance testing
 - [ ] Beta program completion
 
+## 🔧 MVP Technical Shortcuts
+
+### For Hackathon Demo
+- **Contracts**: Simple escrow, no proxy optimization
+- **Backend**: In-memory storage, single resolver
+- **Frontend**: Hardcode BTC/ETH pair only
+- **Timeouts**: Fixed values (BTC: 2h, ETH: 1h)
+- **Testing**: Happy path only, skip edge cases
+
+### What to Mock for Demo
+- ✅ Order chunking visualization (UI only)
+- ✅ Multiple resolver competition
+- ✅ Gas optimization metrics
+- ❌ Real 100-chunk backend (use simple swap)
+- ❌ Production security features
+
+### Demo Success Metrics
+1. **One working BTC→ETH swap**
+2. **Clean UI with animations**
+3. **HTLC visible on both chains**
+4. **Clear value proposition**
+
 ---
 
 **Last Updated**: July 31, 2025
 **Status**: In Development (Local Testing Phase)
 **Development Strategy**: Local first (Tenderly + Bitcoin regtest) → Testnet → Mainnet
-**Target Launch**: TBD
+**Hackathon Target**: 3-day MVP with demo
+**Production Target**: TBD

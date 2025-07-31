@@ -4,6 +4,10 @@
   "description": "Thunder Portal logos and assets",
   "main": "index.js",
   "scripts": {
+    "start": "cd thunder-portal && npm start",
+    "stop": "cd thunder-portal && npm stop",
+    "thunder:install": "cd thunder-portal && npm install",
+    "thunder:test": "cd thunder-portal && npm run test:env",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
