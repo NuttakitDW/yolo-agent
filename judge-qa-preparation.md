@@ -10,6 +10,63 @@
 
 ---
 
+## 🌟 Origin Story & Journey
+
+### "What inspired your project?"
+
+**Answer**: Three converging factors:
+
+1. **Personal Pain**: I tried to move BTC to DeFi last year. Options were: trust WBTC (centralized), use a bridge (got hacked 2 weeks later), or give up. There had to be a better way.
+
+2. **Lightning Success**: Seeing Lightning Network process billions using HTLCs made us realize - the technology exists, it just hadn't been applied cross-chain yet.
+
+3. **The $2.5B Wake-up Call**: Every bridge hack is a reminder that current solutions are fundamentally broken. Wormhole, Nomad, Harmony - all trusted bridges, all hacked. Math doesn't get hacked.
+
+**The "aha" moment**: When we realized 1inch Fusion+ architecture could be extended for Bitcoin atomic swaps. Professional liquidity + atomic security = solved problem.
+
+
+### "What tools did you use, and why?"
+
+**Answer**: We chose proven tools over shiny ones:
+
+**Core Stack**:
+- **Rust for Bitcoin HTLC service**: Memory safety for handling money
+- **Hardhat + Ethers.js**: Industry standard for Ethereum
+- **1inch Fusion+ Protocol**: Battle-tested order matching
+- **Node.js orchestration**: Fast prototyping, good ecosystem
+
+**Key Decisions**:
+- **Why not Go?** Rust's borrow checker prevents entire classes of bugs
+- **Why not Foundry?** Team knows Hardhat, hackathon isn't time to learn
+- **Why fork Fusion+?** Don't reinvent the wheel - extend what works
+
+**Infrastructure**:
+- Bitcoin Core for testnet3
+- Sepolia RPC for Ethereum
+- Docker for service isolation
+
+### "What challenges did you solve, and how?"
+
+**Answer**: Three major breakthroughs:
+
+1. **Bitcoin Script Limitations** 
+   - **Challenge**: No smart contracts, limited opcodes
+   - **Solution**: Generate HTLC addresses server-side, use standard P2SH
+   - **Innovation**: Presigned refund transactions prevent fund locking
+
+2. **Liquidity Fragmentation**
+   - **Challenge**: Finding someone who wants your exact swap
+   - **Solution**: Chunk orders into 100 pieces, multiple resolvers can fill
+   - **Result**: Better prices, faster execution
+
+3. **Cross-Chain Timing**
+   - **Challenge**: Bitcoin 10-min blocks vs Ethereum 12-sec blocks
+   - **Solution**: 24-hour timeout buffer (ETH: 24h, BTC: 48h)
+   - **Safety**: Prevents race conditions, ensures atomic execution
+
+**Bonus Challenge**: Demo-ing blockchain swaps in 2 minutes
+- **Solution**: Beautiful CLI visualization + real testnet fallback
+
 ## 🔥 Core Questions & Answers
 
 ### 1. **"What problem are you solving?"**
@@ -327,6 +384,161 @@ T+48h:  Bitcoin timeout (can refund)
 - Bitcoin network congestion protection
 - Time zone considerations for manual claims
 - Safety margin for infrastructure issues
+
+### "Are Bitcoin HTLCs visible on-chain?"
+
+**Answer**: Yes and no - it depends on the stage:
+
+**Before spending (funding stage)**:
+- Only the P2SH address is visible (e.g., `tb1q...` or `2N...`)
+- The HTLC script is NOT visible - just its hash
+- Looks like a normal payment to any P2SH address
+- Blockchain doesn't know it's an HTLC
+
+**After spending (claim/refund stage)**:
+- Full HTLC script becomes visible in the transaction witness
+- Anyone can see:
+  - The hashlock (SHA256 hash)
+  - The timeout block height
+  - Both parties' public keys
+  - The preimage (if claiming)
+
+**Technical explanation**:
+```
+# HTLC Creation (off-chain math only)
+htlcScript = createScript(hashlock, timeout, pubkeys)
+scriptHash = sha256(htlcScript)
+p2shAddress = deriveAddress(scriptHash)  # This is all that's visible initially
+
+# When claiming (on-chain revelation)
+TX Input: <signature> <preimage> <full_htlc_script>
+# Now everyone can verify: sha256(htlc_script) == scriptHash
+```
+
+**Why this matters**: P2SH provides privacy until redemption. The "Script Hash" in P2SH means you only reveal the script when spending, not when receiving. This is a Bitcoin privacy feature - scripts stay hidden until they need to be executed.
+
+### "How can we verify the HTLC is correct if we can't see the script on-chain?"
+
+**Answer**: Great question! This is solved through cryptographic commitments and client-side verification:
+
+**1. Script Hash Verification**:
+```javascript
+// Both parties independently calculate:
+expectedScript = createHTLCScript(hashlock, timeout, pubkeys);
+expectedScriptHash = sha256(expectedScript);
+expectedAddress = deriveP2SHAddress(expectedScriptHash);
+
+// Verify the address matches:
+if (onChainAddress !== expectedAddress) {
+    throw "HTLC script mismatch!";
+}
+```
+
+**2. Pre-signing Protection**:
+- Before funding, recipient creates a refund transaction
+- This proves they can spend from the HTLC after timeout
+- If script is wrong, refund transaction won't be valid
+
+**3. Commitment Protocol**:
+```
+1. Alice shares: hashlock, timeout, pubkeys
+2. Bob independently computes: P2SH address
+3. Bob verifies: address matches what Alice will fund
+4. Only then: Bob creates his corresponding HTLC
+```
+
+**4. Mathematical Guarantee**:
+- SHA256 is collision-resistant
+- If address matches, script MUST be correct
+- Can't create two different scripts with same hash
+
+**Real-world Example**:
+- Lightning Network uses identical approach
+- Billions in value secured this way
+- Both parties verify locally before funding
+
+**Key insight**: You don't need to see the script on-chain to verify it. Like checking a password hash - you can verify correctness without seeing the password itself.
+
+### "How do Bitcoin scripts work compared to Ethereum smart contracts?"
+
+**Answer**: Bitcoin scripts are fundamentally different from Ethereum - they're verification conditions, not programs:
+
+**Ethereum Smart Contracts**:
+```solidity
+// Programmable - can DO things
+function claimHTLC(bytes32 preimage) {
+    require(sha256(preimage) == hashlock);  // Check condition
+    msg.sender.transfer(amount);             // DO: Send money
+    emit Claimed(preimage);                  // DO: Log event
+}
+```
+
+**Bitcoin Scripts**:
+```
+// Only VERIFY conditions - cannot DO things
+OP_IF
+    OP_SHA256 <hashlock> OP_EQUALVERIFY   // Check: hash matches?
+    <receiver_pubkey> OP_CHECKSIG          // Check: signature valid?
+OP_ELSE
+    <timeout> OP_CHECKLOCKTIMEVERIFY       // Check: time passed?
+    <sender_pubkey> OP_CHECKSIG            // Check: signature valid?
+OP_ENDIF
+```
+
+**Key Differences**:
+
+1. **Bitcoin = Lock Conditions**
+   - Script defines "unlock conditions" for coins
+   - Like a mathematical puzzle: "Show me X that satisfies Y"
+   - Cannot modify state, send money, or call other contracts
+   - Only returns TRUE (can spend) or FALSE (cannot spend)
+
+2. **Ethereum = Computer Program**
+   - Can execute complex logic
+   - Maintains state variables
+   - Can call other contracts
+   - Can emit events
+
+**How HTLC Works in Bitcoin**:
+```
+1. Create script: "Can unlock with (preimage + signature) OR (timeout + signature)"
+2. Hash the script → Get address
+3. Send BTC to that address
+4. To spend: Provide (script + solution that makes script return TRUE)
+```
+
+**Concrete Example**:
+```javascript
+// Creating the HTLC "lock"
+const htlcScript = bitcoin.script.compile([
+    bitcoin.opcodes.OP_IF,
+    bitcoin.opcodes.OP_SHA256,
+    hashlock,
+    bitcoin.opcodes.OP_EQUALVERIFY,
+    receiverPubkey,
+    bitcoin.opcodes.OP_CHECKSIG,
+    bitcoin.opcodes.OP_ELSE,
+    timeout,
+    bitcoin.opcodes.OP_CHECKLOCKTIMEVERIFY,
+    bitcoin.opcodes.OP_DROP,
+    senderPubkey,
+    bitcoin.opcodes.OP_CHECKSIG,
+    bitcoin.opcodes.OP_ENDIF
+]);
+
+// This script is just data - a series of conditions
+// When spending, Bitcoin nodes check: "Does the provided solution make this evaluate to TRUE?"
+```
+
+**Why This Is Secure**:
+- The script IS the smart contract - just expressed as conditions
+- P2SH hides the script until spending (privacy)
+- But both parties know the script beforehand
+- Address proves what script will be revealed
+
+**Analogy**: 
+- Ethereum contract = Vending machine (executes actions)
+- Bitcoin script = Combination lock (just checks if you have the right combination)
 
 ## 🆘 Emergency Pivots
 
