@@ -27,9 +27,6 @@
 - Ethereum side: Smart contract escrow with hash verification
 - Order chunking: Split large orders into 100 pieces for better liquidity
 
-**Lightning Network Connection**:
-HTLCs are the foundational technology of Bitcoin's Lightning Network, processing billions in payments daily. Lightning uses HTLCs for payment routing across channels - we apply the same battle-tested cryptographic primitives for cross-chain swaps. The key difference: Lightning routes within Bitcoin, we route between Bitcoin and Ethereum.
-
 ### 3. **"What's your competitive advantage?"**
 
 **Answer**: 
@@ -107,6 +104,81 @@ HTLCs are the foundational technology of Bitcoin's Lightning Network, processing
 
 **Answer**: Network effects. More liquidity → better prices → more users → more liquidity. Plus, we're first to properly integrate Bitcoin atomic swaps with DeFi infrastructure.
 
+### "Difference with other Bitcoin-based bridges?"
+
+**Answer**: Most "Bitcoin bridges" aren't really bridges - they're custodial services:
+- **WBTC**: BitGo holds your BTC, you trust them completely
+- **tBTC**: Complex collateral system, still requires trust in signers
+- **Ren**: Custodial with distributed signers (Ren shut down in 2022)
+- **Thunder Portal**: No custody, pure atomic swaps with HTLCs
+
+We're not a bridge - we're a swap protocol. No wrapped tokens, no custody, just math.
+
+### "Is there another implementation aside from HTLC? Why choose HTLC?"
+
+**Answer**: We evaluated several approaches:
+- **Adaptor signatures**: Promising but not production-ready on Bitcoin
+- **Threshold signatures**: Requires trust in signer set
+- **Zero-knowledge proofs**: Bitcoin doesn't support verification
+- **HTLCs**: Battle-tested, simple, works on Bitcoin today
+
+HTLCs power $5B+ in Lightning Network. Why reinvent the wheel when we have proven cryptography?
+
+### "How does Thunder Portal provide 'direct security' compared to current solutions?"
+
+**Answer**: 
+- **Bridges**: You send BTC to bridge address → Trust they'll honor it → Get wrapped token
+- **Thunder Portal**: Atomic swap → Both sides execute or neither → No trust period
+
+With bridges, there's always a moment where you've sent BTC but haven't received ETH. That's when $2.5B was stolen. With atomic swaps, that vulnerable moment doesn't exist.
+
+### "Why did you choose 100 chunks? Can this number be changed?"
+
+**Answer**: 100 chunks balances liquidity with gas costs:
+- **Too few chunks** (e.g., 10): Hard to find resolvers for large amounts
+- **Too many chunks** (e.g., 1000): Excessive gas costs
+- **100 chunks**: Sweet spot - 1% granularity, manageable gas
+
+Yes, it's configurable. Future versions could dynamically adjust based on order size and gas prices.
+
+### "Performance and fee on chunking?"
+
+**Answer**: 
+- **Gas per chunk**: ~$0.50 on Ethereum (at 20 gwei)
+- **Total for 100 chunks**: ~$50 setup cost
+- **Amortized on large swaps**: 0.05% on a $100K swap
+- **Optimization**: Merkle tree commitments reduce on-chain data
+
+Resolvers typically fill multiple chunks, reducing transaction count.
+
+### "Why claiming BTC is not fully automatic?"
+
+**Answer**: Bitcoin's scripting limitations:
+- No smart contracts to auto-execute on secret revelation
+- Requires transaction broadcast with secret in witness data
+- Ethereum can react to events; Bitcoin cannot
+
+We're exploring integration with watchtowers for automated claiming, similar to Lightning Network.
+
+### "Does claiming BTC have a 'grace period'?"
+
+**Answer**: Yes, our timeout hierarchy ensures safety:
+- **Ethereum timeout**: 24 hours (claim or refund)
+- **Bitcoin timeout**: 48 hours (longer than Ethereum)
+- **Grace period**: 24 hours to claim BTC after revealing secret on Ethereum
+
+This prevents race conditions - you always have time to claim Bitcoin after claiming Ethereum.
+
+### "How does your timelock and refund implementation align with Bitcoin's security model?"
+
+**Answer**: We follow Bitcoin best practices:
+- **OP_CHECKLOCKTIMEVERIFY**: Native Bitcoin timelock opcode
+- **Absolute timelocks**: No malleability issues
+- **Conservative confirmations**: 6 blocks for finality
+- **Standard scripts**: Compatible with all Bitcoin wallets
+
+Our HTLC scripts are similar to Lightning Network's, audited by the same principles.
+
 ---
 
 ## 🎭 Demo Talking Points
@@ -132,36 +204,61 @@ HTLCs are the foundational technology of Bitcoin's Lightning Network, processing
 
 ---
 
-## ⚡ Lightning Network & HTLC Deep Dive
+## 🔮 Future Development & Challenges
 
-### Why HTLCs Matter
+### "Further challenges on integrating with Lightning Network or other UTXO-based blockchains?"
 
-**The Lightning Network Proof**: 
-- Lightning Network processes $200M+ monthly using HTLCs
-- 5,000+ nodes, 20,000+ channels operating 24/7
-- Zero funds lost to HTLC failures in 5+ years
-- Same cryptographic guarantees we use for cross-chain
+**Answer**: 
 
-**How HTLCs Work**:
-1. **Hash Lock**: Funds locked with SHA-256 hash (H = hash(S))
-2. **Time Lock**: Automatic refund after timeout (e.g., 24 hours)
-3. **Atomic Release**: Revealing secret S unlocks funds on both chains
-4. **No Trust Required**: Pure cryptographic enforcement
+**Lightning Integration** (Phase 2):
+- **Challenge**: Lightning HTLCs are for routing, not holding
+- **Solution**: Submarine swaps between on-chain and Lightning
+- **Benefit**: Instant micro-swaps under $1000
+- **Timeline**: Q2 2024 after mainnet stability
 
-**Lightning vs Thunder Portal**:
+**Other UTXO Chains**:
+- **Litecoin, Bitcoin Cash**: Trivial - same HTLC script
+- **Monero**: Challenge - no script support, needs adaptor signatures
+- **Zcash**: Possible with transparent addresses
+- **Dogecoin**: Yes, for the memes 🐕
 
-| Aspect | Lightning Network | Thunder Portal |
-|--------|------------------|----------------|
-| **Purpose** | BTC payment channels | BTC ⟷ ETH swaps |
-| **HTLC Usage** | Route payments | Bridge chains |
-| **Settlement** | Off-chain mostly | On-chain always |
-| **Security Model** | Same (HTLCs) | Same (HTLCs) |
+**Technical Challenges**:
+1. **Different confirmation times**: Adjust timeout hierarchy
+2. **Script differences**: Abstract HTLC generation
+3. **Fee markets**: Dynamic fee adjustment needed
 
-**Why This Matters for Judges**:
-- Not experimental tech - proven in production for years
-- $5B+ total value locked in Lightning Network
-- We're applying battle-tested primitives in a new way
-- Risk is implementation, not the cryptographic approach
+### "Privacy concerns on cross-chain swaps?"
+
+**Answer**: Current implementation prioritizes security over privacy:
+
+**Privacy Limitations**:
+- On-chain HTLCs are public
+- Same hash links both chains
+- Amount correlation possible
+
+**Privacy Roadmap**:
+1. **Confidential transactions**: Hide amounts (when Ethereum supports)
+2. **Ring signatures**: Obscure participants
+3. **Batch mixing**: Multiple swaps with same hash
+4. **Lightning integration**: Off-chain privacy
+
+**Important**: We're transparent about this tradeoff. Security first, privacy enhancements later.
+
+## ⚡ Technical Deep Dive
+
+### How HTLCs Enable Atomic Swaps
+
+**Lightning Network Proven Security**:
+- $200M+ monthly volume through HTLCs
+- 5,000+ nodes operating 24/7
+- Zero funds lost to HTLC failures
+- Same cryptographic primitives we use
+
+**HTLC Security Properties**:
+1. **Hash preimage**: Unforgeable without secret
+2. **Timelock**: Guaranteed refund path
+3. **Atomic**: Reveal secret = claim both sides
+4. **Trustless**: Pure cryptographic enforcement
 
 ---
 
@@ -183,6 +280,39 @@ HTLCs are the foundational technology of Bitcoin's Lightning Network, processing
 "Imagine Bitcoin's $800 billion flowing freely into DeFi without custodial risk. That's the future Thunder Portal enables - starting today."
 
 ---
+
+## 📊 Implementation Specifics
+
+### Order Chunking Architecture
+
+**Why 100 chunks?**
+- Liquidity distribution: More resolvers can participate
+- Risk management: Resolvers limit exposure per chunk
+- Gas optimization: Balance between too many/too few transactions
+- UX consideration: Visible progress during fills
+
+**Chunk Mechanics**:
+```
+1 BTC order → 100 chunks of 0.01 BTC each
+Each chunk: Independent HTLC with unique secret
+Merkle root: Commits to all 100 secrets
+Partial fills: Any subset of chunks can execute
+```
+
+### Security Timeline
+
+```
+T+0h:   Swap initiated
+T+10m:  Bitcoin HTLC confirmed (1 block)
+T+1h:   Bitcoin HTLC deep confirmation (6 blocks)
+T+24h:  Ethereum timeout (can refund)
+T+48h:  Bitcoin timeout (can refund)
+```
+
+**Why 24-hour buffer?**
+- Bitcoin network congestion protection
+- Time zone considerations for manual claims
+- Safety margin for infrastructure issues
 
 ## 🆘 Emergency Pivots
 
