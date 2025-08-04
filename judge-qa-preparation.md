@@ -179,6 +179,20 @@ This prevents race conditions - you always have time to claim Bitcoin after clai
 
 Our HTLC scripts are similar to Lightning Network's, audited by the same principles.
 
+### "Why is this demo focused on Bitcoin mainnet, not Lightning?"
+
+**Answer**: We started with on-chain Bitcoin for three strategic reasons:
+
+1. **Market Demand**: The $800B locked in Bitcoin mainnet is where institutional liquidity sits. Lightning has ~$200M TVL - important, but not where the big money is yet.
+
+2. **Technical Foundation**: On-chain HTLCs are simpler to audit and prove correctness. Once we nail the mainnet implementation, Lightning is a natural extension using submarine swaps.
+
+3. **Hackathon Strategy**: Judges can verify our mainnet transactions on block explorers. Lightning swaps happen off-chain - harder to prove in a demo. We chose transparency over complexity.
+
+**Follow-up ready**: "Lightning integration is our Q2 2024 milestone. We'll use submarine swaps to bridge on-chain <-> Lightning, enabling instant micro-swaps under $1000. But first, we're capturing the whale market that moves $100K+ per swap."
+
+**If pressed further**: "Lightning's HTLCs are designed for routing payments, not holding value for 10+ minutes. The security model is different - Lightning assumes cooperative channel partners, while cross-chain swaps need adversarial security. We're solving the harder problem first."
+
 ---
 
 ## 🎭 Demo Talking Points
