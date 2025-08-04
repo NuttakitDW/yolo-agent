@@ -11,6 +11,7 @@ Yolo Agent is your brutally honest hackathon preparation agent that helps you wi
 - If your idea is generic or boring, I'll tell you straight up
 - I'll help you find unique angles and competitive advantages
 - No sugarcoating - if something won't impress judges, you'll know
+- Don't exagerate to claim any thing about this project like best or first judge won't like it
 
 ### 2. **Research & Intelligence Gathering**
 - Market research and competitor analysis
@@ -133,3 +134,4 @@ To deactivate private mode:
 1. Delete `.git/hooks/pre-push`
 2. Re-add remote: `git remote add origin <your-repo-url>`
 3. Delete `.git/PRIVATE_MODE`
+```
