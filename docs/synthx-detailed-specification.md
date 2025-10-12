@@ -855,31 +855,56 @@ With SynthX:
 - Democratized access
 ```
 
-**How It Works:**
+**How It Works (Two-Sided Market):**
 
 ```
+SynthX has TWO types of users:
+
+MINTERS (Supply Providers - SHORT):
+- Deposit collateral, mint synthetics
+- Sell to buyers, earn fees
+- Risk liquidation if price rises
+
+BUYERS (Long Exposure - LONG):
+- Buy synthetics from minters
+- Profit if price rises
+- No liquidation risk (they own the tokens)
+
+Example: Bob wants to invest in OpenAI pre-IPO
+
 Step 1: Oracle Agent discovers OpenAI price
 - Analyzes funding rounds: $86B valuation
 - Scrapes secondary markets: $165/share average
 - Compares to MSFT/GOOGL valuations
 - MeTTa reasoning: Fair value $157/share
 
-Step 2: User mints synthetic $OPENAI
+Step 2: ALICE (Market Maker) mints supply
 - Deposits $31,400 PYUSD (200% collateral ratio)
-- Receives 100 synthetic $OPENAI tokens
-- Each token = 1 share economic exposure
+- Mints 100 synthetic $OPENAI tokens
+- Sells to market for $15,700 PYUSD
+- Alice is now SHORT (hopes price drops)
 
-Step 3: News catalysts move price
+Step 3: BOB (Investor) buys exposure
+- Buys 100 $OPENAI from market for $15,700 PYUSD
+- Bob now OWNS 100 $OPENAI tokens
+- Bob is now LONG (hopes price rises)
+
+Step 4: News catalysts move price
 - GPT-5 launches → Revolutionary capability
 - Oracle Agent updates price: $157 → $215
-- User's 100 tokens now worth $21,500
+- Bob's 100 tokens now worth $21,500
 
-Step 4: User takes profit
-- Burns 100 $OPENAI tokens
-- Withdraws $43,000 PYUSD (original collateral + profit)
-- Net profit: $11,600 (37% return)
+Step 5: Bob takes profit
+- Sells 100 $OPENAI tokens for $21,500 PYUSD
+- Net profit: $21,500 - $15,700 = $5,800 (37% return) ✅
 
-User made money on OpenAI BEFORE IPO.
+Meanwhile, Alice (minter):
+- Debt increased: 100 tokens × $215 = $21,500
+- Collateral: $31,400 (unchanged)
+- Collateral ratio: 146% (BELOW 200% minimum!)
+- Alice must add collateral OR get liquidated ⚠️
+
+Bob made $5,800 on OpenAI BEFORE IPO.
 This was impossible before SynthX.
 ```
 
@@ -1896,16 +1921,20 @@ No oracle? No problem. AI discovers the price."
 
 "Watch me invest in OpenAI right now.
 
-Step 1: I'll mint 100 synthetic $OPENAI tokens"
+Step 1: Oracle discovers OpenAI price"
+[Screen shows: $157/share, 85% confidence]
+
+Step 2: I'll BUY 100 synthetic $OPENAI tokens"
 [Types: Amount = 100]
 
-"Collateral required: $31,400 PYUSD (200% ratio)"
-[Connects wallet, deposits PYUSD]
+"Cost: $15,700 PYUSD (100 shares × $157)"
+[Connects wallet, buys from market]
 
-"Minting via Vincent automation..."
+"Buying via Vincent automation..."
 [Transaction processes]
 
 "Done! I now own 100 $OPENAI synthetics.
+I'm LONG - I profit if OpenAI price rises."
 
 [2 weeks pass - time-lapse]
 
@@ -1913,14 +1942,17 @@ Step 1: I'll mint 100 synthetic $OPENAI tokens"
 
 [Screen shows price update]
 "Oracle Agent updated price: $157 → $215"
-"My position: $15,700 → $21,500"
+"My holdings: 100 tokens × $215 = $21,500"
 
 "I'm up $5,800 (37% profit)"
 
-[Clicks "Burn"]
-"Burning synthetics, withdrawing profit..."
+[Clicks "Sell"]
+"Selling synthetics..."
 
-[Screen shows: Received $37,200 PYUSD]
+[Screen shows: Received $21,500 PYUSD]
+"Initial investment: $15,700
+Final value: $21,500
+Profit: $5,800"
 
 "Made $5,800 on OpenAI BEFORE IPO.
 This was impossible before SynthX."
