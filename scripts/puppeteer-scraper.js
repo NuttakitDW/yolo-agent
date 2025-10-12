@@ -122,7 +122,7 @@ class AdvancedScraper {
             
             previousHeight = currentHeight;
             await this.page.evaluate('window.scrollTo(0, document.body.scrollHeight)');
-            await this.page.waitForTimeout(scrollDelay);
+            await new Promise(resolve => setTimeout(resolve, scrollDelay));
             scrollCount++;
         }
         
